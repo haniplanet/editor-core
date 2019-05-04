@@ -1,3 +1,3 @@
-const test: () => number = () => 100;
+import AtlaskitCustomEditor from "./components/AtlaskitCustomEditor";
 
-export default test;
+export { AtlaskitCustomEditor };
