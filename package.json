@@ -1,0 +1,8 @@
+{
+  "name": "atlaskit-custom-editor",
+  "version": "0.0.1",
+  "description": "Atlaskit Editor with Custom Extensions",
+  "main": "build/index.js",
+  "author": "jungpaeng",
+  "license": "MIT"
+}
