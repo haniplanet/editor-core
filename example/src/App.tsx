@@ -1,10 +1,11 @@
 import * as React from "react";
+import AtlaskitCustomEditor from "atlaskit-custom-editor";
 
 const App: React.FC = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Module Test</h1>
+        <h1>{AtlaskitCustomEditor()}</h1>
       </header>
     </div>
   );
