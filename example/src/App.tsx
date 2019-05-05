@@ -1,5 +1,5 @@
-import * as React from "react";
-import { AtlaskitCustomEditor } from "atlaskit-custom-editor";
+import * as React from 'react';
+import { AtlaskitCustomEditor } from 'atlaskit-custom-editor';
 
 const App: React.FC = () => {
   return (

@@ -1,0 +1,20 @@
+{
+  "extends": ["tslint:latest", "tslint-react", "tslint-config-airbnb"],
+  "rules": {
+    "import-name": false,
+    "variable-name": false,
+    "jsx-no-multiline-js": false,
+    "object-shorthand-properties-first": false,
+    "jsx-no-lambda": false,
+    "prefer-array-literal": false,
+    "no-submodule-imports": false,
+    "member-access": false,
+    "ordered-imports": false,
+    "no-object-literal-type-assertion": false,
+    "object-literal-sort-keys": false,
+    "no-shadowed-variable": false,
+    "no-unused-expression": false,
+    "ter-arrow-parens": false,
+    "no-implicit-dependencies": false
+  }
+}

@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 const AtlaskitCustomEditor = () => <h1>AtlaskitCustomEditor</h1>;
 
