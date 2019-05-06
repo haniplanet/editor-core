@@ -1,3 +1,3 @@
-import AtlaskitCustomEditor from "./components/AtlaskitCustomEditor";
+import AtlaskitCustomEditor from './components/AtlaskitCustomEditor';
 
 export { AtlaskitCustomEditor };
