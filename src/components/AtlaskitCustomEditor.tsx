@@ -1,5 +1,13 @@
 import * as React from 'react';
 
-const AtlaskitCustomEditor = () => <h1>AtlaskitCustomEditor</h1>;
+class AtlaskitCustomEditor extends React.Component {
+  render() {
+    return (
+      <div>
+        <p>Atlaskit Custom Editor</p>
+      </div>
+    );
+  }
+}
 
 export default AtlaskitCustomEditor;
