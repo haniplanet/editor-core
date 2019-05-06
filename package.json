@@ -6,17 +6,10 @@
   "author": "jungpaeng",
   "license": "MIT",
   "scripts": {
-    "build": "yarn rm:build && yarn build:ts && yarn build:webpack && yarn git",
+    "build": "yarn rm:build && yarn build:ts && yarn build:webpack",
     "rm:build": "rm -rf build/",
     "build:ts": "tsc",
-    "build:webpack": "WEBPACK_ENV=production webpack",
-    "git": "yarn git:add && yarn git:checkout:build && yarn git:commit && yarn git:push && yarn git:reset && yarn git:checkout:master",
-    "git:add": "git add -f package.json build/",
-    "git:checkout:build": "git checkout build",
-    "git:checkout:master": "git checkout master",
-    "git:commit": "git commit -m \"Build Package\"",
-    "git:push": "git push --force origin master:build",
-    "git:reset": "git reset HEAD^"
+    "build:webpack": "WEBPACK_ENV=production webpack"
   },
   "dependencies": {
     "@babel/runtime": "^7.4.4",
