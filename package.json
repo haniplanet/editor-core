@@ -8,7 +8,7 @@
   "scripts": {
     "build": "yarn build:ts && yarn build:webpack",
     "build:ts": "tsc",
-    "build:webpack": "webpack"
+    "build:webpack": "WEBPACK_ENV=production webpack"
   },
   "dependencies": {
     "@babel/runtime": "^7.4.4",
