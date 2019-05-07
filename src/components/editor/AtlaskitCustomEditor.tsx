@@ -6,7 +6,9 @@ class AtlaskitCustomEditor extends React.Component {
     return (
       <div>
         <p>Atlaskit Custom Editor</p>
-        <Editor />
+        <Editor
+          appearance="comment"
+        />
       </div>
     );
   }
