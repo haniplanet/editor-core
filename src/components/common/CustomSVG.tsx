@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-interface Props {
+interface IProps {
   width: string;
   height: string;
   d: string;
 }
 
-const CustomSVG = ({ width, height, d }: Props) => (
+const CustomSVG = ({ width, height, d }: IProps) => (
   <svg
     width={width}
     height={height}
