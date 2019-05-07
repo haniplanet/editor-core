@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { InsertMenuCustomItem } from '@atlaskit/editor-core/types';
 import CustomSVG from '../components/common/CustomSVG';
 import { camelize } from './string';
