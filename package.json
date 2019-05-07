@@ -6,10 +6,17 @@
   "author": "jungpaeng",
   "license": "MIT",
   "scripts": {
-    "build": "yarn rm:build && yarn build:ts && yarn build:webpack",
+    "build": "yarn rm:build && yarn build:ts && yarn build:webpack && yarn git",
     "rm:build": "rm -rf build/",
     "build:ts": "tsc",
-    "build:webpack": "WEBPACK_ENV=production webpack"
+    "build:webpack": "WEBPACK_ENV=production webpack",
+    "git": "yarn git:add:master && yarn git:build && yarn git:co:master && git reset HEAD^1",
+    "git:build": "yarn git:co:build && yarn git:clear:build && yarn git:add:build && git push",
+    "git:co:master": "git checkout master",
+    "git:co:build": "git checkout build",
+    "git:add:master": "git add -f package.json build/ && git commit -m \"Build Package\"",
+    "git:clear:build": "rm -rf build && git add -f build/ && git commit -m \"Delete Build\"",
+    "git:add:build": "git cherry-pick master"
   },
   "dependencies": {
     "@atlaskit/editor-core": "^110.3.0",
