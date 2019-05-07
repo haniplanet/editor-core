@@ -12,8 +12,12 @@
     "build:webpack": "WEBPACK_ENV=production webpack"
   },
   "dependencies": {
+    "@atlaskit/editor-core": "^110.3.0",
+    "@atlaskit/media-core": "^30.0.0",
     "@babel/runtime": "^7.4.4",
-    "react": "^16.8.6"
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-intl": "^2.8.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
