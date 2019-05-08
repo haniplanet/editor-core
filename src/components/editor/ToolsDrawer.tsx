@@ -45,7 +45,7 @@ class ToolsDrawer extends React.Component<IProps> {
     })
 
   render() {
-    const { renderEditor, isImageUpload } = this.props;
+    const { renderEditor, customButton, isImageUpload } = this.props;
 
     return (
       <EditorContext>
@@ -73,15 +73,21 @@ class ToolsDrawer extends React.Component<IProps> {
             )}
           />
           {renderEditor({
+            customButton: customButton.map(data =>
+              createEditorMenuItem({
+                content: data.name,
+                onClick: data.onClick,
+              }),
+            ),
+            fileUploadMenuItem: createEditorMenuItem({
+              content: 'File Upload',
+              onClick: () => this.fileInputRef.current.fileRef.current.click(),
+            }),
             legacyImageUploadProvider:
               isImageUpload &&
               Promise.resolve(() =>
                 this.imageUploadRef.current.fileRef.current.click(),
               ),
-            fileUploadMenuItem: createEditorMenuItem({
-              content: 'File Upload',
-              onClick: () => this.fileInputRef.current.fileRef.current.click(),
-            }),
           })}
         </>
       </EditorContext>

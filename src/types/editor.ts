@@ -22,3 +22,9 @@ export interface IRenderEditor {
   fileUploadMenuItem?: InsertMenuCustomItem;
   customButton?: InsertMenuCustomItem[];
 }
+
+export interface ICustomButton {
+  name: string;
+  element?: ReactComponents;
+  onClick?: (editorActions: EditorActions) => void;
+}

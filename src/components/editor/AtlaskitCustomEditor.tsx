@@ -3,30 +3,26 @@ import { Editor } from '@atlaskit/editor-core';
 import ToolsDrawer from './ToolsDrawer';
 import extensionHandlers from './helpers/extensionHandlers';
 import selectMockMenu from './helpers/selectMockMenu';
+import { ICustomButton } from '../../types/editor';
 
-class AtlaskitCustomEditor extends React.Component {
-  render() {
-    return (
-      <div>
-        <p>Atlaskit Custom Editor</p>
-        <ToolsDrawer
-          isImageUpload={true}
-          renderEditor={({ legacyImageUploadProvider, fileUploadMenuItem }) => (
-            <Editor
-              appearance="comment"
-              extensionHandlers={extensionHandlers}
-              insertMenuItems={[
-                ...selectMockMenu(['movie']),
-                fileUploadMenuItem,
-              ]}
-              legacyImageUploadProvider={legacyImageUploadProvider}
-              allowExtension={true}
-            />
-          )}
-        />
-      </div>
-    );
-  }
+interface IProps {
+  customButton?: ICustomButton[];
 }
+
+const AtlaskitCustomEditor: React.FC<IProps> = ({ customButton }) => (
+  <ToolsDrawer
+    customButton={customButton}
+    isImageUpload={true}
+    renderEditor={({ legacyImageUploadProvider, fileUploadMenuItem }) => (
+      <Editor
+        appearance="comment"
+        extensionHandlers={extensionHandlers}
+        insertMenuItems={[...selectMockMenu(['movie']), fileUploadMenuItem]}
+        legacyImageUploadProvider={legacyImageUploadProvider}
+        allowExtension={true}
+      />
+    )}
+  />
+);
 
 export default AtlaskitCustomEditor;
