@@ -21,6 +21,7 @@
   "dependencies": {
     "@atlaskit/editor-core": "^110.3.0",
     "@atlaskit/media-core": "^30.0.0",
+    "@atlaskit/renderer": "^48.1.0",
     "@babel/runtime": "^7.4.4",
     "classnames": "^2.2.6",
     "react": "^16.8.6",
