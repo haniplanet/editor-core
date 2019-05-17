@@ -1,0 +1,33 @@
+---
+name: Getting Started
+---
+
+# Getting Started
+
+## Installation
+
+Install `atlaskit-custom-editor` from bitbucket:
+
+```sh
+yarn add https://bitbucket.org/devbalky/atlaskit-custom-editor/\#build
+```
+
+## Usage
+
+You can use components in your React app:
+
+```jsx
+import {
+  AtlaskitCustomEditor,
+  AtlaskitCustomRenderer
+} from "atlaskit-custom-editor";
+
+const App = () => (
+  <div>
+    <AtlaskitCustomEditor />
+    <AtlaskitCustomRenderer editorValue="" />
+  </div>
+);
+
+export default App;
+```
