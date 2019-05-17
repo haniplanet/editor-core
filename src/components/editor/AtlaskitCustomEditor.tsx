@@ -12,8 +12,8 @@ interface IProps {
 }
 
 const AtlaskitCustomEditor: React.FC<IProps> = ({
-  customButton,
-  customExtensions,
+  customButton = [],
+  customExtensions = {},
 }) => (
   <ToolsDrawer
     customButton={customButton}
