@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Editor } from '@atlaskit/editor-core';
+import { Editor, EditorActions } from '@atlaskit/editor-core';
 import { ExtensionHandlers } from '@atlaskit/editor-common';
 import ToolsDrawer from './ToolsDrawer';
 import extensionHandlers from './helpers/extensionHandlers';
@@ -8,15 +8,15 @@ import { ICustomButton } from '../../types/editor';
 
 interface IProps {
   customButton?: ICustomButton[];
-  customActionButton?: React.ElementType[];
+  customActionButton?: (actions: EditorActions) => React.ElementType[];
   customExtensions?: ExtensionHandlers;
-  getValue?: (value: string) => void;
+  getValue: (value: string) => void;
 }
 
 const AtlaskitCustomEditor: React.FC<IProps> = ({
-  customButton = [],
-  customActionButton = [],
-  customExtensions = {},
+  customButton,
+  customActionButton,
+  customExtensions,
   getValue,
 }) => (
   <ToolsDrawer
@@ -37,5 +37,11 @@ const AtlaskitCustomEditor: React.FC<IProps> = ({
     )}
   />
 );
+
+AtlaskitCustomEditor.defaultProps = {
+  customButton: [],
+  customActionButton: () => [],
+  customExtensions: {},
+};
 
 export default AtlaskitCustomEditor;

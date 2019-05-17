@@ -11,7 +11,7 @@ import { ICustomButton, IRenderEditor } from '../../types/editor';
 interface IProps {
   renderEditor: (params: IRenderEditor) => React.ReactNode;
   customButton?: ICustomButton[];
-  customActionButton?: React.ElementType[];
+  customActionButton?: (actions: EditorActions) => React.ElementType[];
   isImageUpload?: boolean;
 }
 
@@ -75,7 +75,7 @@ class ToolsDrawer extends React.Component<IProps> {
                     isHide={true}
                   />
                 )}
-                {customActionButton.map(
+                {customActionButton(actions).map(
                   (CustomActionButton, idx) => CustomActionButton,
                 )}
               </>
