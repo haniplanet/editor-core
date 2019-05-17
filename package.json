@@ -19,6 +19,7 @@
     "git:add:build": "git cherry-pick master"
   },
   "dependencies": {
+    "@atlaskit/editor-common": "^39.3.0",
     "@atlaskit/editor-core": "^110.3.0",
     "@atlaskit/media-core": "^30.0.0",
     "@atlaskit/renderer": "^48.1.0",
