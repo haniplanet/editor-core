@@ -16,7 +16,8 @@
     "git:co:build": "git checkout build",
     "git:add:master": "git add -f package.json build/ && git commit -m \"Build Package\"",
     "git:clear:build": "rm -rf build && git add -f build/ && git commit -m \"Delete Build\"",
-    "git:add:build": "git cherry-pick master"
+    "git:add:build": "git cherry-pick master",
+    "build:docz": "node --max-old-space-size=8192 --stack-size=1968 node_modules/.bin/docz build"
   },
   "dependencies": {
     "@atlaskit/editor-common": "^39.7.0",
