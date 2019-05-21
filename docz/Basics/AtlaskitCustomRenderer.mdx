@@ -1,0 +1,62 @@
+---
+name: AtlaskitCustomRenderer
+menu: Basics
+---
+
+import { Playground, Props } from "docz";
+import AtlaskitCustomRenderer from "../../src/components/renderer/AtlaskitCustomRenderer";
+
+# AtlaskitCustomRenderer
+
+## Properties
+
+<Props of={AtlaskitCustomRenderer} />
+
+## Basic usage
+
+<Playground>
+  {() => {
+    class Renderer extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          editorValue: {
+            version: 1,
+            type: "doc",
+            content: [
+              {
+                type: "heading",
+                attrs: { level: 1 },
+                content: [{ type: "text", text: "Document" }]
+              },
+              {
+                type: "paragraph",
+                content: [{ type: "text", text: "Document Test" }]
+              }
+            ]
+          }
+        };
+      }
+      render() {
+        const { editorValue } = this.state;
+        return (
+          <div>
+            <textarea
+              cols="30"
+              rows="10"
+              value={JSON.stringify(editorValue, null, 2)}
+              onChange={e => {
+                const {
+                  target: { value }
+                } = e;
+                this.setState({ editorValue: JSON.parse(value) });
+              }}
+            />
+            <AtlaskitCustomRenderer editorValue={editorValue} />
+          </div>
+        );
+      }
+    }
+    return <Renderer />;
+  }}
+</Playground>
