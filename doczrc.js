@@ -1,5 +1,5 @@
 export default {
   title: "Atlaskit Custom Editor",
-  menu: ["Home", "Getting Started", "Basics"],
+  menu: ["Getting Started", "Basics", "Library"],
   typescript: true
 };

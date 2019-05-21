@@ -11,6 +11,7 @@ import { ICustomButton, IRenderEditor } from '../../types/editor';
 interface IProps {
   renderEditor: (params: IRenderEditor) => React.ReactNode;
   customButton?: ICustomButton[];
+  customActionButton?: (actions: EditorActions) => React.ElementType[];
   isImageUpload?: boolean;
 }
 
@@ -45,7 +46,12 @@ class ToolsDrawer extends React.Component<IProps> {
     })
 
   render() {
-    const { renderEditor, customButton, isImageUpload } = this.props;
+    const {
+      renderEditor,
+      customButton,
+      customActionButton,
+      isImageUpload,
+    } = this.props;
 
     return (
       <EditorContext>
@@ -68,6 +74,9 @@ class ToolsDrawer extends React.Component<IProps> {
                     multiple={true}
                     isHide={true}
                   />
+                )}
+                {customActionButton(actions).map(
+                  (CustomActionButton, idx) => CustomActionButton,
                 )}
               </>
             )}

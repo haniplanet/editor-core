@@ -15,5 +15,44 @@ import AtlaskitCustomEditor from "../../src/components/editor/AtlaskitCustomEdit
 ## Basic usage
 
 <Playground>
-  <AtlaskitCustomEditor customButton={[]} />
+  <AtlaskitCustomEditor />
+</Playground>
+
+## Get Value
+
+<Playground>
+  {() => {
+    class GetValue extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          editorValue: "{}"
+        };
+      }
+      render() {
+        const { editorValue } = this.state;
+        return (
+          <div>
+            <AtlaskitCustomEditor
+              customActionButton={actions => [
+                <button
+                  onClick={() =>
+                    actions.getValue().then(editorValue =>
+                      this.setState({
+                        editorValue: JSON.stringify(editorValue, null, 2)
+                      })
+                    )
+                  }
+                >
+                  Click Me
+                </button>
+              ]}
+            />
+            <div style={{ whiteSpace: "pre-wrap" }}>{editorValue}</div>
+          </div>
+        );
+      }
+    }
+    return <GetValue />;
+  }}
 </Playground>

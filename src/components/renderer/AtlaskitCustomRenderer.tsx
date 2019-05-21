@@ -10,7 +10,7 @@ interface IProps {
 
 const AtlaskitCustomRenderer: React.FC<IProps> = ({
   editorValue,
-  customExtensions = {},
+  customExtensions,
 }) => (
   <ReactRenderer
     document={editorValue}
@@ -20,5 +20,9 @@ const AtlaskitCustomRenderer: React.FC<IProps> = ({
     }}
   />
 );
+
+AtlaskitCustomRenderer.defaultProps = {
+  customExtensions: {},
+};
 
 export default AtlaskitCustomRenderer;
