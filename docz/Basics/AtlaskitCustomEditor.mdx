@@ -56,3 +56,50 @@ import AtlaskitCustomEditor from "../../src/components/editor/AtlaskitCustomEdit
     return <GetValue />;
   }}
 </Playground>
+
+## Value Test
+
+<Playground>
+  {() => {
+    const ValueTest = () => {
+      const [editorValue, setEditorValue] = React.useState("");
+
+      return (
+        <div>
+          <div>
+            <textarea
+              cols="30"
+              rows="10"
+              value={editorValue}
+              onChange={({target: {value}}) => {
+                setEditorValue(value);
+              }}
+            />
+          </div>
+          <AtlaskitCustomEditor
+            customActionButton={actions => [
+              <button
+                onClick={() => {
+                  actions.replaceDocument(JSON.parse(editorValue));
+                }}
+              >
+                textarea to Editor
+              </button>,
+              <button
+                onClick={() => {
+                  actions.getValue().then(editorValue => {
+                    setEditorValue(JSON.stringify(editorValue, null, 2));
+                  })
+                }}
+              >
+                Editor to textarea
+              </button>
+            ]}
+          />
+        </div>
+      );
+    };
+
+    return <ValueTest />;
+  }}
+</Playground>
