@@ -10,14 +10,12 @@ interface IProps {
   customButton?: ICustomButton[];
   customActionButton?: (actions: EditorActions) => React.ElementType[];
   customExtensions?: ExtensionHandlers;
-  getValue: (value: string) => void;
 }
 
 const AtlaskitCustomEditor: React.FC<IProps> = ({
   customButton,
   customActionButton,
   customExtensions,
-  getValue,
 }) => (
   <ToolsDrawer
     customButton={customButton}
