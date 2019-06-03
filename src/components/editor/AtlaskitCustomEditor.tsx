@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Editor, EditorActions } from '@atlaskit/editor-core';
+import { Editor, EditorActions, EditorProps } from '@atlaskit/editor-core';
 import { ExtensionHandlers } from '@atlaskit/editor-common';
 import ToolsDrawer from './ToolsDrawer';
 import extensionHandlers from './helpers/extensionHandlers';
@@ -10,12 +10,14 @@ interface IProps {
   customButton?: ICustomButton[];
   customActionButton?: (actions: EditorActions) => React.ElementType[];
   customExtensions?: ExtensionHandlers;
+  defaultValue?: Pick<EditorProps, 'defaultValue'>;
 }
 
 const AtlaskitCustomEditor: React.FC<IProps> = ({
   customButton,
   customActionButton,
   customExtensions,
+  defaultValue,
 }) => (
   <ToolsDrawer
     customButton={customButton}
@@ -24,6 +26,7 @@ const AtlaskitCustomEditor: React.FC<IProps> = ({
     renderEditor={({ legacyImageUploadProvider, fileUploadMenuItem }) => (
       <Editor
         appearance="comment"
+        defaultValue={defaultValue}
         extensionHandlers={{
           ...extensionHandlers,
           ...customExtensions,
