@@ -33,6 +33,11 @@ const AtlaskitCustomEditor: React.FC<IProps> = ({
         }}
         insertMenuItems={[...selectMockMenu(['movie']), fileUploadMenuItem]}
         legacyImageUploadProvider={legacyImageUploadProvider}
+        allowCodeBlocks={true}
+        allowLists={true}
+        allowTables={true}
+        allowTextColor={true}
+        allowTextAlignment={true}
         allowExtension={true}
       />
     )}
