@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { InsertMenuCustomItem } from '@atlaskit/editor-core/types';
 import CustomSVG from '../components/common/CustomSVG';
-import { camelize } from './string';
+import { camelize, pascalcase } from './string';
 import { TEST_ICON } from '../constants/svg';
 import { IEditorMenuItems } from '../types/editor';
 
@@ -33,7 +33,7 @@ export const extensionContent = ({
   attrs: {
     extensionType: extensionType || 'com.haniplanet.macro.core',
     extensionKey: key,
-    text: `${camelize(key)} extension`,
+    text: `${pascalcase(key)} extension`,
     parameters,
   },
 });
