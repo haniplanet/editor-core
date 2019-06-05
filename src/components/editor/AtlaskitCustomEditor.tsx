@@ -8,7 +8,7 @@ import { ICustomButton } from '../../types/editor';
 
 interface IProps {
   customButton?: ICustomButton[];
-  customActionButton?: (actions: EditorActions) => React.ElementType[];
+  customActionButton?: (actions: EditorActions) => React.ReactElement[];
   customExtensions?: ExtensionHandlers;
   defaultValue?: Pick<EditorProps, 'defaultValue'>;
 }

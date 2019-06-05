@@ -11,7 +11,7 @@ import { ICustomButton, IRenderEditor } from '../../types/editor';
 interface IProps {
   renderEditor: (params: IRenderEditor) => React.ReactNode;
   customButton?: ICustomButton[];
-  customActionButton?: (actions: EditorActions) => React.ElementType[];
+  customActionButton?: (actions: EditorActions) => React.ReactElement[];
   isImageUpload?: boolean;
 }
 
@@ -92,11 +92,6 @@ class ToolsDrawer extends React.Component<IProps> {
               content: 'File Upload',
               onClick: () => this.fileInputRef.current.fileRef.current.click(),
             }),
-            legacyImageUploadProvider:
-              isImageUpload &&
-              Promise.resolve(() =>
-                this.imageUploadRef.current.fileRef.current.click(),
-              ),
           })}
         </>
       </EditorContext>
