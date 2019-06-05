@@ -17,3 +17,23 @@ export const createEditorMenuItem = ({
   elemBefore: elemBefore || <CustomSVG width="24" height="24" d={TEST_ICON} />,
   onClick,
 });
+
+interface IExtensionContent {
+  key: string;
+  parameters: any;
+  extensionType?: string;
+}
+
+export const extensionContent = ({
+  key,
+  parameters,
+  extensionType,
+}: IExtensionContent) => ({
+  type: 'extension',
+  attrs: {
+    extensionType: extensionType || 'com.haniplanet.macro.core',
+    extensionKey: key,
+    text: `${camelize(key)} extension`,
+    parameters,
+  },
+});

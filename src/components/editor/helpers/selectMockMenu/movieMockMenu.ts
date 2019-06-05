@@ -1,5 +1,5 @@
 import { youtubeReg, vimeoReg } from '../../../../constants/urls';
-import { createEditorMenuItem } from '../../../../lib/editor';
+import { createEditorMenuItem, extensionContent } from '../../../../lib/editor';
 
 interface IParams {
   type: string;
@@ -24,15 +24,12 @@ const movieMockMenu = createEditorMenuItem({
       return null;
     }
 
-    editorActions.replaceSelection({
-      type: 'extension',
-      attrs: {
-        extensionType: 'com.haniplanet.macro.core',
-        extensionKey: 'movie',
-        text: 'Movie extension',
+    editorActions.replaceSelection(
+      extensionContent({
+        key: 'movie',
         parameters: newParameters,
-      },
-    });
+      }),
+    );
   },
 });
 
