@@ -2,24 +2,24 @@ import { ExtensionHandlers } from '@atlaskit/editor-common';
 import movieExtension from './movieExtension';
 import mediaExtension from './mediaExtension';
 
-interface IExtension {
-  isMovie?: boolean;
-  isMedia?: boolean;
+export interface IBasicExtension {
+  isMovieExtension?: boolean;
+  isMediaExtension?: boolean;
 }
 
-const extensionHandlers = (extension: IExtension): ExtensionHandlers => ({
+const extensionHandlers = (extension: IBasicExtension): ExtensionHandlers => ({
   'com.haniplanet.macro.core': (ext, doc) => {
-    const { isMovie, isMedia } = extension;
+    const { isMovieExtension, isMediaExtension } = extension;
     const { extensionKey, parameters } = ext;
 
     switch (extensionKey) {
       case 'movie':
-        if (!isMovie) {
+        if (!isMovieExtension) {
           return null;
         }
         return movieExtension(parameters);
       case 'media':
-        if (!isMedia) {
+        if (!isMediaExtension) {
           return null;
         }
         return mediaExtension(parameters);

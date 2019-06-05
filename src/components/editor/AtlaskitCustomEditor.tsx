@@ -2,22 +2,30 @@ import * as React from 'react';
 import { Editor, EditorActions, EditorProps } from '@atlaskit/editor-core';
 import { ExtensionHandlers } from '@atlaskit/editor-common';
 import ToolsDrawer from './ToolsDrawer';
-import extensionHandlers from './helpers/extensionHandlers';
-import selectMockMenu from './helpers/selectMockMenu';
+import extensionHandlers, {
+  IBasicExtension,
+} from './helpers/extensionHandlers';
+import selectMockMenu, { TSelectMockMenu } from './helpers/selectMockMenu';
 import { ICustomButton } from '../../types/editor';
 
 interface IProps {
+  basicExtension?: IBasicExtension;
+  basicMockMenu?: TSelectMockMenu;
   customButton?: ICustomButton[];
   customActionButton?: (actions: EditorActions) => React.ReactElement[];
   customExtensions?: ExtensionHandlers;
+  editorProps?: EditorProps;
   defaultValue?: Pick<EditorProps, 'defaultValue'>;
 }
 
 const AtlaskitCustomEditor: React.FC<IProps> = ({
+  basicExtension,
+  basicMockMenu,
   customButton,
   customActionButton,
   customExtensions,
   defaultValue,
+  editorProps,
 }) => (
   <ToolsDrawer
     customButton={customButton}
@@ -25,31 +33,36 @@ const AtlaskitCustomEditor: React.FC<IProps> = ({
     isImageUpload={true}
     renderEditor={({ fileUploadMenuItem }) => (
       <Editor
-        appearance="comment"
         defaultValue={defaultValue}
         extensionHandlers={{
-          ...extensionHandlers({ isMovie: true, isMedia: true }),
+          ...extensionHandlers(basicExtension),
           ...customExtensions,
         }}
-        insertMenuItems={[
-          ...selectMockMenu(['movie', 'media']),
-          fileUploadMenuItem,
-        ]}
-        allowCodeBlocks={true}
-        allowLists={true}
-        allowTables={true}
-        allowTextColor={true}
-        allowTextAlignment={true}
-        allowExtension={true}
+        insertMenuItems={[...selectMockMenu(basicMockMenu), fileUploadMenuItem]}
+        {...editorProps}
       />
     )}
   />
 );
 
 AtlaskitCustomEditor.defaultProps = {
+  basicExtension: {
+    isMovieExtension: true,
+    isMediaExtension: true,
+  },
+  basicMockMenu: ['movie', 'media'],
   customButton: [],
   customActionButton: () => [],
   customExtensions: {},
+  editorProps: {
+    appearance: 'comment',
+    allowCodeBlocks: true,
+    allowLists: true,
+    allowTables: true,
+    allowTextColor: true,
+    allowTextAlignment: true,
+    allowExtension: true,
+  },
 };
 
 export default AtlaskitCustomEditor;

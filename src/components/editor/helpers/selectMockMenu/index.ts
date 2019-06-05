@@ -4,7 +4,7 @@ import mediaMockMenu from './mediaMockMenu';
 
 type MockMenuItem = 'movie' | 'media';
 
-type SelectMockMenu = MockMenuItem[];
+export type TSelectMockMenu = MockMenuItem[];
 
 interface IMockInsertMenu {
   [key: string]: InsertMenuCustomItem;
@@ -15,7 +15,7 @@ const mockInsertMenu: IMockInsertMenu = {
   media: mediaMockMenu,
 };
 
-const selectMockMenu = (menu: SelectMockMenu): InsertMenuCustomItem[] =>
+const selectMockMenu = (menu: TSelectMockMenu): InsertMenuCustomItem[] =>
   menu.map(menuItem => mockInsertMenu[menuItem]);
 
 export default selectMockMenu;

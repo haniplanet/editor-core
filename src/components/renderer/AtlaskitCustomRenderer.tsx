@@ -2,10 +2,13 @@ import * as React from 'react';
 import { ReactRenderer } from '@atlaskit/renderer';
 import { ExtensionHandlers, ProviderFactory } from '@atlaskit/editor-common';
 import { storyMediaProviderFactory } from '@atlaskit/editor-test-helpers';
-import extensionHandlers from '../editor/helpers/extensionHandlers';
+import extensionHandlers, {
+  IBasicExtension,
+} from '../editor/helpers/extensionHandlers';
 
 interface IProps {
   editorValue: string;
+  basicExtension?: IBasicExtension;
   customExtensions?: ExtensionHandlers;
 }
 
@@ -17,19 +20,24 @@ const providerFactory = ProviderFactory.create({
 
 const AtlaskitCustomRenderer: React.FC<IProps> = ({
   editorValue,
+  basicExtension,
   customExtensions,
 }) => (
   <ReactRenderer
     document={editorValue}
     dataProviders={providerFactory}
     extensionHandlers={{
-      ...extensionHandlers({ isMovie: true }),
+      ...extensionHandlers(basicExtension),
       ...customExtensions,
     }}
   />
 );
 
 AtlaskitCustomRenderer.defaultProps = {
+  basicExtension: {
+    isMovieExtension: true,
+    isMediaExtension: true,
+  },
   customExtensions: {},
 };
 
