@@ -1,6 +1,5 @@
 import { InsertMenuCustomItem } from '@atlaskit/editor-core/types';
 import movieMockMenu from './movieMockMenu';
-import mediaMockMenu from './mediaMockMenu';
 
 type MockMenuItem = 'movie' | 'media';
 
@@ -12,7 +11,6 @@ interface IMockInsertMenu {
 
 const mockInsertMenu: IMockInsertMenu = {
   movie: movieMockMenu,
-  media: mediaMockMenu,
 };
 
 const selectMockMenu = (menu: TSelectMockMenu): InsertMenuCustomItem[] =>

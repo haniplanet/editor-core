@@ -54,7 +54,7 @@ AtlaskitCustomEditor.defaultProps = {
     isMovieExtension: true,
     isMediaExtension: true,
   },
-  basicMockMenu: ['movie', 'media'],
+  basicMockMenu: ['movie'],
   customButton: [],
   customActionButton: () => [],
   customExtensions: {},
