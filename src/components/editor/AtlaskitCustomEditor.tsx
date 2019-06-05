@@ -23,27 +23,21 @@ const AtlaskitCustomEditor: React.FC<IProps> = ({
     customButton={customButton}
     customActionButton={customActionButton}
     isImageUpload={true}
-    renderEditor={({ legacyImageUploadProvider, fileUploadMenuItem }) => (
+    renderEditor={({ fileUploadMenuItem }) => (
       <Editor
         appearance="comment"
         defaultValue={defaultValue}
         extensionHandlers={{
-          ...extensionHandlers,
+          ...extensionHandlers({ isMovie: true }),
           ...customExtensions,
         }}
         insertMenuItems={[...selectMockMenu(['movie']), fileUploadMenuItem]}
-        // legacyImageUploadProvider={legacyImageUploadProvider}
         allowCodeBlocks={true}
         allowLists={true}
         allowTables={true}
         allowTextColor={true}
         allowTextAlignment={true}
         allowExtension={true}
-        media={{
-          allowMediaSingle: true,
-          allowResizing: true,
-          allowAnnotation: true,
-        }}
       />
     )}
   />

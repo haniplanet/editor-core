@@ -23,7 +23,7 @@ const AtlaskitCustomRenderer: React.FC<IProps> = ({
     document={editorValue}
     dataProviders={providerFactory}
     extensionHandlers={{
-      ...extensionHandlers,
+      ...extensionHandlers({ isMovie: true }),
       ...customExtensions,
     }}
   />
