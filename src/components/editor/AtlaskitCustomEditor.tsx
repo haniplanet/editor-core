@@ -31,7 +31,7 @@ const AtlaskitCustomEditor: React.FC<IProps> = ({
           ...extensionHandlers({ isMovie: true }),
           ...customExtensions,
         }}
-        insertMenuItems={[...selectMockMenu(['movie']), fileUploadMenuItem]}
+        insertMenuItems={[...selectMockMenu(['movie', 'media']), fileUploadMenuItem]}
         allowCodeBlocks={true}
         allowLists={true}
         allowTables={true}
