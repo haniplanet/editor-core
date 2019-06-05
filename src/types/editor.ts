@@ -18,9 +18,9 @@ export interface ICustomButton {
 }
 
 export interface IRenderEditor {
-  legacyImageUploadProvider?: Promise<ImageUploadHandler>;
-  fileUploadMenuItem?: InsertMenuCustomItem;
   customButton?: InsertMenuCustomItem[];
+  fileUploadMenuItem?: InsertMenuCustomItem;
+  imageUploadMenuItem: InsertMenuCustomItem;
 }
 
 export interface ICustomButton {

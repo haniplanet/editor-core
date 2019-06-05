@@ -30,15 +30,19 @@ const AtlaskitCustomEditor: React.FC<IProps> = ({
   <ToolsDrawer
     customButton={customButton}
     customActionButton={customActionButton}
-    isImageUpload={true}
-    renderEditor={({ fileUploadMenuItem }) => (
+    isImageUpload={basicMockMenu.includes('media')}
+    renderEditor={({ fileUploadMenuItem, imageUploadMenuItem }) => (
       <Editor
         defaultValue={defaultValue}
         extensionHandlers={{
           ...extensionHandlers(basicExtension),
           ...customExtensions,
         }}
-        insertMenuItems={[...selectMockMenu(basicMockMenu), fileUploadMenuItem]}
+        insertMenuItems={[
+          fileUploadMenuItem,
+          imageUploadMenuItem,
+          ...selectMockMenu(basicMockMenu),
+        ]}
         {...editorProps}
       />
     )}
