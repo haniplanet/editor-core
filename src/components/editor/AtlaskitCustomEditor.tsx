@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Editor, EditorActions, EditorProps } from '@atlaskit/editor-core';
 import { ExtensionHandlers } from '@atlaskit/editor-common';
+import { InsertMenuCustomItem } from '@atlaskit/editor-core/types';
 import ToolsDrawer from './ToolsDrawer';
 import extensionHandlers, {
   IBasicExtension,
@@ -30,22 +31,33 @@ const AtlaskitCustomEditor: React.FC<IProps> = ({
   <ToolsDrawer
     customButton={customButton}
     customActionButton={customActionButton}
-    isImageUpload={basicMockMenu.includes('media')}
-    renderEditor={({ fileUploadMenuItem, imageUploadMenuItem }) => (
-      <Editor
-        defaultValue={defaultValue}
-        extensionHandlers={{
-          ...extensionHandlers(basicExtension),
-          ...customExtensions,
-        }}
-        insertMenuItems={[
-          fileUploadMenuItem,
-          imageUploadMenuItem,
-          ...selectMockMenu(basicMockMenu),
-        ]}
-        {...editorProps}
-      />
-    )}
+    isImageUpload={basicExtension.isMediaExtension}
+    renderEditor={({ fileUploadMenuItem, imageUploadMenuItem }) => {
+      const { isMediaExtension, isMovieExtension } = basicExtension;
+      let basicInsertMenu: InsertMenuCustomItem[] = [];
+
+      basicInsertMenu = isMediaExtension
+        ? [...basicInsertMenu, imageUploadMenuItem]
+        : basicInsertMenu;
+      basicInsertMenu = isMovieExtension
+        ? [...basicInsertMenu, fileUploadMenuItem]
+        : basicInsertMenu;
+
+      return (
+        <Editor
+          defaultValue={defaultValue}
+          extensionHandlers={{
+            ...extensionHandlers(basicExtension),
+            ...customExtensions,
+          }}
+          insertMenuItems={[
+            ...basicInsertMenu,
+            ...selectMockMenu(basicMockMenu),
+          ]}
+          {...editorProps}
+        />
+      );
+    }}
   />
 );
 
