@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-const mediaExtension = (parameters: string): React.ReactElement => (
+interface IParameters {
+  src: string;
+}
+
+const mediaExtension = ({ src }: IParameters): React.ReactElement => (
   <div>
-    <img
-      style={{ maxWidth: '100%' }}
-      src={parameters}
-      alt="글 내에 포함된 이미지"
-    />
+    <img style={{ maxWidth: '100%' }} src={src} alt="글 내에 포함된 이미지" />
   </div>
 );
 

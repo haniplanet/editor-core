@@ -25,12 +25,12 @@ const ToolsDrawer: React.FC<IProps> = props => {
     actions: EditorActions,
   ) =>
     fileList.forEach(async file => {
-      const parameters = await window.URL.createObjectURL(file);
+      const src = await window.URL.createObjectURL(file);
 
       actions.replaceSelection(
         extensionContent({
           key: 'media',
-          parameters,
+          parameters: { src },
         }),
       );
     });
