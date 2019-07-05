@@ -19,12 +19,12 @@
     "git:add:build": "git cherry-pick master"
   },
   "dependencies": {
-    "@atlaskit/editor-common": "^39.7.0",
-    "@atlaskit/editor-core": "^112.11.8",
+    "@atlaskit/editor-common": "^39.13.2",
+    "@atlaskit/editor-core": "^112.25.3",
     "@atlaskit/editor-json-transformer": "^6.2.0",
-    "@atlaskit/editor-test-helpers": "^9.3.7",
-    "@atlaskit/media-core": "^30.0.4",
-    "@atlaskit/renderer": "^48.7.1",
+    "@atlaskit/editor-test-helpers": "^9.5.2",
+    "@atlaskit/media-core": "^30.0.6",
+    "@atlaskit/renderer": "^49.4.2",
     "@babel/runtime": "^7.4.4",
     "classnames": "^2.2.6",
     "react": "^16.8.6",
