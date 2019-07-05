@@ -20,13 +20,24 @@ interface IProps {
 }
 
 const AtlaskitCustomEditor: React.FC<IProps> = ({
-  basicExtension,
-  basicMockMenu,
-  customButton,
-  customActionButton,
-  customExtensions,
+  basicExtension = {
+    isMovieExtension: true,
+    isMediaExtension: true,
+  },
+  basicMockMenu = ['movie'],
+  customButton = [],
+  customActionButton = () => [],
+  customExtensions = {},
   defaultValue,
-  editorProps,
+  editorProps = {
+    appearance: 'comment',
+    allowCodeBlocks: true,
+    allowLists: true,
+    allowTables: true,
+    allowTextColor: true,
+    allowTextAlignment: true,
+    allowExtension: true,
+  },
 }) => (
   <ToolsDrawer
     customButton={customButton}
@@ -60,25 +71,5 @@ const AtlaskitCustomEditor: React.FC<IProps> = ({
     }}
   />
 );
-
-AtlaskitCustomEditor.defaultProps = {
-  basicExtension: {
-    isMovieExtension: true,
-    isMediaExtension: true,
-  },
-  basicMockMenu: ['movie'],
-  customButton: [],
-  customActionButton: () => [],
-  customExtensions: {},
-  editorProps: {
-    appearance: 'comment',
-    allowCodeBlocks: true,
-    allowLists: true,
-    allowTables: true,
-    allowTextColor: true,
-    allowTextAlignment: true,
-    allowExtension: true,
-  },
-};
 
 export default AtlaskitCustomEditor;
