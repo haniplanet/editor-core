@@ -30,6 +30,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-intl": "^2.8.0",
+    "react-lazily-render-scroll-parent": "^1.1.1",
     "styled-jsx": "^3.2.1"
   },
   "devDependencies": {

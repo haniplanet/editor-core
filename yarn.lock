@@ -9609,6 +9609,13 @@ react-is@^16.3.1, react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
   integrity sha512-aUk3bHfZ2bRSVFFbbeVS4i+lNPZr3/WM5jT2J5omUVV1zzcs1nAaf3l51ctA5FFvCRbhrH0bdAsRRQddFJZPtA==
 
+react-lazily-render-scroll-parent@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-lazily-render-scroll-parent/-/react-lazily-render-scroll-parent-1.1.1.tgz#c3e36981e26116bd42d568265e8af5ff0c250e6b"
+  integrity sha512-GVL9r61RMo1uZR1h1uGulk6IYqL9ipE7IVIIE9v+jhD+SJOHF9zC2/b3TjM94XVlbG7Cf4tyCHHq1jDa2MHHxA==
+  dependencies:
+    scrollparent "^2.0.1"
+
 react-lazily-render@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/react-lazily-render/-/react-lazily-render-1.1.0.tgz#bd831961040503bfd9e852b990fd44561090ff09"
