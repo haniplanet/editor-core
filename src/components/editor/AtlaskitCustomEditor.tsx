@@ -29,57 +29,46 @@ const AtlaskitCustomEditor: React.FC<IProps> = ({
   customActionButton = () => [],
   customExtensions = {},
   defaultValue,
-  editorProps = {
-    appearance: 'comment',
-    allowCodeBlocks: true,
-    allowLists: true,
-    allowTables: true,
-    allowTextColor: true,
-    allowTextAlignment: true,
-    allowExtension: true,
-  },
-}) => {
-  console.log('basicExtension', basicExtension);
-  console.log('basicMockMenu', basicMockMenu);
-  console.log('customButton', customButton);
-  console.log('customActionButton', customActionButton);
-  console.log('customExtensions', customExtensions);
-  console.log('defaultValue', defaultValue);
-  console.log('editorProps', editorProps);
+  editorProps = {},
+}) => (
+  <ToolsDrawer
+    customButton={customButton}
+    customActionButton={customActionButton}
+    isImageUpload={basicExtension.isMediaExtension}
+    renderEditor={({ fileUploadMenuItem, imageUploadMenuItem }) => {
+      const { isMediaExtension, isMovieExtension } = basicExtension;
+      let basicInsertMenu: InsertMenuCustomItem[] = [];
 
-  return (
-    <ToolsDrawer
-      customButton={customButton}
-      customActionButton={customActionButton}
-      isImageUpload={basicExtension.isMediaExtension}
-      renderEditor={({ fileUploadMenuItem, imageUploadMenuItem }) => {
-        const { isMediaExtension, isMovieExtension } = basicExtension;
-        let basicInsertMenu: InsertMenuCustomItem[] = [];
+      basicInsertMenu = isMediaExtension
+        ? [...basicInsertMenu, imageUploadMenuItem]
+        : basicInsertMenu;
+      basicInsertMenu = isMovieExtension
+        ? [...basicInsertMenu, fileUploadMenuItem]
+        : basicInsertMenu;
 
-        basicInsertMenu = isMediaExtension
-          ? [...basicInsertMenu, imageUploadMenuItem]
-          : basicInsertMenu;
-        basicInsertMenu = isMovieExtension
-          ? [...basicInsertMenu, fileUploadMenuItem]
-          : basicInsertMenu;
-
-        return (
-          <Editor
-            defaultValue={defaultValue}
-            extensionHandlers={{
-              ...extensionHandlers(basicExtension),
-              ...customExtensions,
-            }}
-            insertMenuItems={[
-              ...basicInsertMenu,
-              ...selectMockMenu(basicMockMenu),
-            ]}
-            {...editorProps}
-          />
-        );
-      }}
-    />
-  );
-};
+      return (
+        <Editor
+          appearance="comment"
+          allowCodeBlocks={true}
+          allowLists={true}
+          allowTables={true}
+          allowTextColor={true}
+          allowTextAlignment={true}
+          allowExtension={true}
+          defaultValue={defaultValue}
+          extensionHandlers={{
+            ...extensionHandlers(basicExtension),
+            ...customExtensions,
+          }}
+          insertMenuItems={[
+            ...basicInsertMenu,
+            ...selectMockMenu(basicMockMenu),
+          ]}
+          {...editorProps}
+        />
+      );
+    }}
+  />
+);
 
 export default AtlaskitCustomEditor;
