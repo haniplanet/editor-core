@@ -21,6 +21,7 @@
   "dependencies": {
     "@atlaskit/editor-common": "^39.7.0",
     "@atlaskit/editor-core": "^112.11.8",
+    "@atlaskit/editor-json-transformer": "^6.2.0",
     "@atlaskit/editor-test-helpers": "^9.3.7",
     "@atlaskit/media-core": "^30.0.4",
     "@atlaskit/renderer": "^48.7.1",
