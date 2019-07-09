@@ -5,6 +5,7 @@ const ENTRY_FILE = path.resolve(__dirname, "src", "index.ts");
 const OUTPUT_DIR = path.join(__dirname, "build");
 
 const ENTRY_LIB_FILE = path.resolve(__dirname, "src", "lib", "index.ts");
+const ENTRY_EDITOR_FILE = path.resolve(__dirname, "src", "components", "editor", "AtlaskitCustomEditor.tsx");
 
 const config = {
   mode: MODE,
@@ -13,7 +14,8 @@ const config = {
   },
   entry: {
     index: ["@babel/polyfill", ENTRY_FILE],
-    lib: ["@babel/polyfill", ENTRY_LIB_FILE]
+    lib: ["@babel/polyfill", ENTRY_LIB_FILE],
+    'atlaskit-custom-editor': ["@babel/polyfill", ENTRY_EDITOR_FILE],
   },
   output: {
     path: OUTPUT_DIR,
