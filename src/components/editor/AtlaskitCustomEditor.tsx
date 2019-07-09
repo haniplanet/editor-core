@@ -9,7 +9,7 @@ import extensionHandlers, {
 import selectMockMenu, { TSelectMockMenu } from './helpers/selectMockMenu';
 import { ICustomButton } from '../../types/editor';
 
-interface IProps {
+const AtlaskitCustomEditor: React.FC<{
   basicExtension?: IBasicExtension;
   basicMockMenu?: TSelectMockMenu;
   customButton?: ICustomButton[];
@@ -17,9 +17,7 @@ interface IProps {
   customExtensions?: ExtensionHandlers;
   editorProps?: EditorProps;
   defaultValue?: Pick<EditorProps, 'defaultValue'>;
-}
-
-const AtlaskitCustomEditor: React.FC<IProps> = ({
+}> = ({
   basicExtension = {
     isMovieExtension: true,
     isMediaExtension: true,

@@ -8,14 +8,14 @@ import FileInput from '../common/FileInput';
 import { createEditorMenuItem, extensionContent } from '../../lib/editor';
 import { ICustomButton, IRenderEditor } from '../../types/editor';
 
-interface IProps {
+interface IToolsDrawerProps {
   isImageUpload: boolean;
   renderEditor: (params: IRenderEditor) => React.ReactNode;
   customButton?: ICustomButton[];
   customActionButton?: (actions: EditorActions) => React.ReactElement[];
 }
 
-const ToolsDrawer: React.FC<IProps> = props => {
+const ToolsDrawer: React.FC<IToolsDrawerProps> = props => {
   const fileInputRef: React.RefObject<FileInput> = React.useRef();
   const imageUploadRef: React.RefObject<FileInput> = React.useRef();
 

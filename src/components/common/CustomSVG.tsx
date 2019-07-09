@@ -1,12 +1,10 @@
 import * as React from 'react';
 
-interface IProps {
+const CustomSVG: React.FC<{
   width: string;
   height: string;
   d: string;
-}
-
-const CustomSVG = ({ width, height, d }: IProps) => (
+}> = ({ width, height, d }) => (
   <svg
     width={width}
     height={height}

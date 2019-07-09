@@ -6,19 +6,17 @@ import extensionHandlers, {
   IBasicExtension,
 } from '../editor/helpers/extensionHandlers';
 
-interface IProps {
-  editorValue: string;
-  basicExtension?: IBasicExtension;
-  customExtensions?: ExtensionHandlers;
-}
-
 const mediaProvider = storyMediaProviderFactory();
 
 const providerFactory = ProviderFactory.create({
   mediaProvider,
 });
 
-const AtlaskitCustomRenderer: React.FC<IProps> = ({
+const AtlaskitCustomRenderer: React.FC<{
+  editorValue: string;
+  basicExtension?: IBasicExtension;
+  customExtensions?: ExtensionHandlers;
+}> = ({
   editorValue,
   basicExtension,
   customExtensions,

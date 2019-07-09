@@ -2,21 +2,21 @@ import * as React from 'react';
 import cn from 'classnames';
 import { uploadFile } from '../../lib/file';
 
-interface IProps {
+interface IFileInputProps {
   onChange: (fileList: File[]) => void;
   disabled?: boolean;
   isHide?: boolean;
   multiple?: boolean;
 }
 
-interface IState {
+interface IFileInputState {
   file: File;
 }
 
-class FileInput extends React.Component<IProps, IState> {
+class FileInput extends React.Component<IFileInputProps, IFileInputState> {
   fileRef: React.RefObject<HTMLInputElement> = React.createRef();
 
-  state: IState = {
+  state: IFileInputState = {
     file: null,
   };
 
