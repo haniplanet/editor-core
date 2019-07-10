@@ -14,14 +14,14 @@ interface IRenderEditor {
   imageUploadMenuItem: InsertMenuCustomItem;
 }
 
-interface IToolsDrawerProps {
+interface IMenuDrawerProps {
   isImageUpload: boolean;
   renderEditor: (params: IRenderEditor) => React.ReactNode;
   customButton?: ICustomButtom[];
   customActionButton?: (actions: EditorActions) => React.ReactElement[];
 }
 
-const ToolsDrawer: React.FC<IToolsDrawerProps> = React.memo(
+const MenuDrawer: React.FC<IMenuDrawerProps> = React.memo(
   ({ isImageUpload, renderEditor, customButton, customActionButton }) => {
     const fileInputRef = React.useRef<HTMLInputElement>(
       (null as any) as HTMLInputElement,
@@ -82,4 +82,4 @@ const ToolsDrawer: React.FC<IToolsDrawerProps> = React.memo(
   },
 );
 
-export default ToolsDrawer;
+export default MenuDrawer;

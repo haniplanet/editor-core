@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Editor, EditorProps } from '@atlaskit/editor-core';
-import UploadMedia from './menu/UploadMedia';
+import MenuDrawer from './menu/MenuDrawer';
 
 interface IHaniEditorProps {
   editorProps?: EditorProps;
@@ -11,7 +11,7 @@ const AtlaskitCustomEditor: React.FC<IHaniEditorProps> = ({
   defaultValue,
   editorProps = {},
 }) => (
-  <UploadMedia
+  <MenuDrawer
     isImageUpload={true}
     renderEditor={({ fileUploadMenuItem, imageUploadMenuItem }) => {
       return (
