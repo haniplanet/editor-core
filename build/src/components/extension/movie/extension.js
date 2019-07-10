@@ -8,8 +8,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __importStar(require("react"));
-var extension = function (parameters) {
-    var type = parameters.type, key = parameters.key;
+var Extension = React.memo(function (_a) {
+    var type = _a.type, key = _a.key;
     var movie = {};
     switch (type) {
         case 'youtube':
@@ -25,5 +25,5 @@ var extension = function (parameters) {
     }
     return (React.createElement("div", null,
         React.createElement("iframe", { title: "movie-" + movie.id, width: "560", height: "315", src: movie.src + movie.id })));
-};
-exports.default = extension;
+});
+exports.default = Extension;

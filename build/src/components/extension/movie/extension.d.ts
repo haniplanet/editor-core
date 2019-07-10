@@ -1,3 +1,7 @@
-/// <reference types="react" />
-declare const extension: (parameters: any) => JSX.Element | null;
-export default extension;
+import * as React from 'react';
+interface IMovieExtensionProps {
+    type: string;
+    key: string;
+}
+declare const Extension: React.NamedExoticComponent<IMovieExtensionProps>;
+export default Extension;

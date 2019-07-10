@@ -55,13 +55,13 @@ var MenuDrawer = React.memo(function (_a) {
     var isImageUpload = _a.isImageUpload, renderEditor = _a.renderEditor, customButton = _a.customButton, customActionButton = _a.customActionButton, uploadHandler = _a.uploadHandler;
     var fileInputRef = React.useRef(null);
     var imageUploadRef = React.useRef(null);
-    var recursiveFileUploadQueue = function (fileList) {
+    var recursiveFileUploadQueue = React.useCallback(function (fileList) {
         if (!uploadHandler)
             return null;
         var file = uploadHandler.file;
         file && file(fileList);
-    };
-    var recursiveImageUploadQueue = function (fileList, actions) { return __awaiter(_this, void 0, void 0, function () {
+    }, [uploadHandler]);
+    var recursiveImageUploadQueue = React.useCallback(function (fileList, actions) { return __awaiter(_this, void 0, void 0, function () {
         var image, src;
         return __generator(this, function (_a) {
             if (!uploadHandler)
@@ -76,7 +76,7 @@ var MenuDrawer = React.memo(function (_a) {
             }));
             return [2 /*return*/];
         });
-    }); };
+    }); }, [uploadHandler]);
     var memoCustomButton = React.useMemo(function () {
         return customButton
             ? customButton.map(function (item) {
