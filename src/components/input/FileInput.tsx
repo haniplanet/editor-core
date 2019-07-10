@@ -35,7 +35,14 @@ const FileInput = React.memo(
       setFile(file);
     };
 
-    return <input type="file" ref={ref} onChange={fileOnChange} />;
+    return (
+      <input
+        type="file"
+        ref={ref}
+        onChange={fileOnChange}
+        style={{ display: 'none' }}
+      />
+    );
   }),
 );
 
