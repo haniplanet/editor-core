@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 interface IFileInputProps {
-  onChange: (file: File) => void;
+  onChange: (file: File | File[]) => void;
 }
 
 const uploadFile = (files: FileList, onChange: (file: File) => void) => {
@@ -20,22 +20,23 @@ const uploadFile = (files: FileList, onChange: (file: File) => void) => {
   });
 };
 
-const FileInput: React.FC<IFileInputProps> = React.memo(({ onChange }) => {
-  const fileRef = React.useRef<HTMLInputElement>(null);
-  const [file, setFile] = React.useState<File>((null as any) as File);
+const FileInput = React.memo(
+  React.forwardRef<HTMLInputElement, IFileInputProps>(({ onChange }, ref) => {
+    const [file, setFile] = React.useState<File>((null as any) as File);
 
-  const fileOnChange = ({
-    target: { files },
-  }: React.ChangeEvent<HTMLInputElement>) => {
-    if (!(files as FileList).length) return null;
+    const fileOnChange = ({
+      target: { files },
+    }: React.ChangeEvent<HTMLInputElement>) => {
+      if (!(files as FileList).length) return null;
 
-    const file = (files as FileList)[0];
+      const file = (files as FileList)[0];
 
-    uploadFile(files as FileList, onChange);
-    setFile(file);
-  };
+      uploadFile(files as FileList, onChange);
+      setFile(file);
+    };
 
-  return <input type="file" ref={fileRef} onChange={fileOnChange} />;
-});
+    return <input type="file" ref={ref} onChange={fileOnChange} />;
+  }),
+);
 
 export default FileInput;
