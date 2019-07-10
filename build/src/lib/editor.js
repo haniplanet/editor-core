@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var editor_json_transformer_1 = require("@atlaskit/editor-json-transformer");
 var string_1 = require("./string");
 // 에디터의 본문을 extensions 형식에 맞춰 작성해주는 함수
 exports.extensionContent = function (_a) {
@@ -14,3 +15,4 @@ exports.extensionContent = function (_a) {
         },
     });
 };
+exports.editorTransformer = new editor_json_transformer_1.JSONTransformer();

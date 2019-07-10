@@ -1,3 +1,4 @@
+import { JSONTransformer } from '@atlaskit/editor-json-transformer';
 interface IExtensionContent {
     key: string;
     parameters: any;
@@ -12,4 +13,5 @@ export declare const extensionContent: ({ key, parameters, extensionType, }: IEx
         parameters: any;
     };
 };
+export declare const editorTransformer: JSONTransformer;
 export {};
