@@ -1,0 +1,13 @@
+{
+  "name": "hani-write-module",
+  "version": "0.0.0",
+  "description": "Haniplanet Editor with Renderer",
+  "main": "build/index.js",
+  "repository": "https://github.com/haniplanet/atlaskit-custom-editor.git",
+  "author": "Im Yongbeen <meis1541@naver.com>",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
+}
