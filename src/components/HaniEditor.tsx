@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ExtensionHandlers } from '@atlaskit/editor-common';
 import { Editor, EditorProps, EditorActions } from '@atlaskit/editor-core';
-import MenuDrawer from './menu/MenuDrawer';
+import MenuDrawer, { IUploadHandler } from './menu/MenuDrawer';
 import extensionHandlers, {
   IBasicExtension,
 } from './extension/extensionsHandler';
@@ -16,6 +16,7 @@ interface IHaniEditorProps {
   customActionButton?: (actions: EditorActions) => React.ReactElement[];
   customExtensions?: ExtensionHandlers;
   editorProps?: EditorProps;
+  uploadHandler?: IUploadHandler;
 }
 
 const AtlaskitCustomEditor: React.FC<IHaniEditorProps> = ({
@@ -29,6 +30,7 @@ const AtlaskitCustomEditor: React.FC<IHaniEditorProps> = ({
   customActionButton,
   customExtensions,
   editorProps = {},
+  uploadHandler,
 }) => {
   const { isMediaExtension } = basicExtension;
 
@@ -37,6 +39,7 @@ const AtlaskitCustomEditor: React.FC<IHaniEditorProps> = ({
       customButton={customButton}
       customActionButton={customActionButton}
       isImageUpload={isMediaExtension ? isMediaExtension : false}
+      uploadHandler={uploadHandler}
       renderEditor={({
         customButton,
         fileUploadMenuItem,

@@ -15,15 +15,27 @@ interface IRenderEditor {
   customButton: InsertMenuCustomItem[];
 }
 
+export interface IUploadHandler {
+  image?: (fileList: File | File[]) => any;
+  file?: (fileList: File | File[]) => any;
+}
+
 interface IMenuDrawerProps {
   isImageUpload: boolean;
   renderEditor: (params: IRenderEditor) => React.ReactNode;
   customButton?: ICustomButtom[];
   customActionButton?: (actions: EditorActions) => React.ReactElement[];
+  uploadHandler?: IUploadHandler;
 }
 
 const MenuDrawer: React.FC<IMenuDrawerProps> = React.memo(
-  ({ isImageUpload, renderEditor, customButton, customActionButton }) => {
+  ({
+    isImageUpload,
+    renderEditor,
+    customButton,
+    customActionButton,
+    uploadHandler,
+  }) => {
     const fileInputRef = React.useRef<HTMLInputElement>(
       (null as any) as HTMLInputElement,
     );
@@ -32,6 +44,9 @@ const MenuDrawer: React.FC<IMenuDrawerProps> = React.memo(
     );
 
     const recursiveFileUploadQueue = (fileList: File | File[]) => {
+      if (!uploadHandler) return null;
+      const { file } = uploadHandler;
+      file && file(fileList);
       // tslint:disable-next-line:no-debugger
       debugger;
     };
@@ -40,6 +55,10 @@ const MenuDrawer: React.FC<IMenuDrawerProps> = React.memo(
       actions: EditorActions,
     ) =>
       (fileList as File[]).forEach(async file => {
+        if (!uploadHandler) return null;
+
+        const { image } = uploadHandler;
+        image && image(file);
         // const src = await window.URL.createObjectURL(file);
         // tslint:disable-next-line:no-debugger
         debugger;
