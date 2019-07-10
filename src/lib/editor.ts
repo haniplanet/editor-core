@@ -1,3 +1,4 @@
+import { JSONTransformer } from '@atlaskit/editor-json-transformer';
 import { pascalcase } from './string';
 
 interface IExtensionContent {
@@ -20,3 +21,5 @@ export const extensionContent = ({
     parameters,
   },
 });
+
+export const editorTransformer = new JSONTransformer();

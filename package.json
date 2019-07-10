@@ -18,6 +18,7 @@
   "dependencies": {
     "@atlaskit/editor-common": "^39.16.0",
     "@atlaskit/editor-core": "^112.32.0",
+    "@atlaskit/editor-json-transformer": "^6.2.0",
     "@atlaskit/media-core": "^30.0.6",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

@@ -299,7 +299,7 @@
     tslib "^1.9.3"
     uuid "^3.1.0"
 
-"@atlaskit/editor-json-transformer@^6.1.0":
+"@atlaskit/editor-json-transformer@^6.1.0", "@atlaskit/editor-json-transformer@^6.2.0":
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/@atlaskit/editor-json-transformer/-/editor-json-transformer-6.2.0.tgz#ff5b66dea613ea12d1ddaba3e7fd53ca7efbc574"
   integrity sha512-5UJBf9s7crE3HzAFII5GtGsuMGnMLGmK3Ag+aAQ+dw0iwdNcr2bYfpwrQ1BZIBmxap01FPFqLLxPk+S8LbnJwQ==
