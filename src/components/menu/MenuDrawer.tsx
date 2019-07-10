@@ -12,6 +12,7 @@ import { createEditorMenuItem } from '../../lib/menu';
 interface IRenderEditor {
   fileUploadMenuItem: InsertMenuCustomItem;
   imageUploadMenuItem: InsertMenuCustomItem;
+  customButton: InsertMenuCustomItem[];
 }
 
 interface IMenuDrawerProps {
@@ -50,6 +51,19 @@ const MenuDrawer: React.FC<IMenuDrawerProps> = React.memo(
         // );
       });
 
+    const memoCustomButton = React.useMemo(
+      () =>
+        customButton
+          ? customButton.map(item =>
+              createEditorMenuItem({
+                content: item.name,
+                onClick: item.onClick,
+              }),
+            )
+          : [],
+      [customButton],
+    );
+
     return (
       <EditorContext>
         <>
@@ -63,10 +77,15 @@ const MenuDrawer: React.FC<IMenuDrawerProps> = React.memo(
                     onChange={file => recursiveImageUploadQueue(file, actions)}
                   />
                 )}
+                {customActionButton &&
+                  customActionButton(actions).map(
+                    CustomActionButton => CustomActionButton,
+                  )}
               </>
             )}
           />
           {renderEditor({
+            customButton: memoCustomButton,
             fileUploadMenuItem: createEditorMenuItem({
               content: 'File Upload',
               onClick: () => fileInputRef.current.click(),

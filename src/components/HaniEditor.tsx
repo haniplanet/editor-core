@@ -1,19 +1,30 @@
 import * as React from 'react';
-import { Editor, EditorProps } from '@atlaskit/editor-core';
+import { Editor, EditorProps, EditorActions } from '@atlaskit/editor-core';
 import MenuDrawer from './menu/MenuDrawer';
+import { ICustomButtom } from '../../types/editor';
 
 interface IHaniEditorProps {
-  editorProps?: EditorProps;
   defaultValue?: Pick<EditorProps, 'defaultValue'>;
+  customButton: ICustomButtom[];
+  customActionButton?: (actions: EditorActions) => React.ReactElement[];
+  editorProps?: EditorProps;
 }
 
 const AtlaskitCustomEditor: React.FC<IHaniEditorProps> = ({
   defaultValue,
+  customButton,
+  customActionButton,
   editorProps = {},
 }) => (
   <MenuDrawer
+    customButton={customButton}
+    customActionButton={customActionButton}
     isImageUpload={true}
-    renderEditor={({ fileUploadMenuItem, imageUploadMenuItem }) => {
+    renderEditor={({
+      customButton,
+      fileUploadMenuItem,
+      imageUploadMenuItem,
+    }) => {
       return (
         <Editor
           appearance="comment"
@@ -24,7 +35,11 @@ const AtlaskitCustomEditor: React.FC<IHaniEditorProps> = ({
           allowTextAlignment={true}
           allowExtension={true}
           defaultValue={defaultValue}
-          insertMenuItems={[fileUploadMenuItem, imageUploadMenuItem]}
+          insertMenuItems={[
+            ...customButton,
+            fileUploadMenuItem,
+            imageUploadMenuItem,
+          ]}
           {...editorProps}
         />
       );
