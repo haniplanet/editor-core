@@ -10,7 +10,7 @@ import { ICustomButtom } from '../../../types/editor';
 import { createEditorMenuItem } from '../../lib/menu';
 
 interface IRenderEditor {
-  fileUploadMenuItem?: InsertMenuCustomItem;
+  fileUploadMenuItem: InsertMenuCustomItem;
   imageUploadMenuItem: InsertMenuCustomItem;
 }
 
@@ -31,6 +31,7 @@ const ToolsDrawer: React.FC<IToolsDrawerProps> = React.memo(
     );
 
     const recursiveFileUploadQueue = (fileList: File | File[]) => {
+      // tslint:disable-next-line:no-debugger
       debugger;
     };
     const recursiveImageUploadQueue = (
@@ -39,6 +40,7 @@ const ToolsDrawer: React.FC<IToolsDrawerProps> = React.memo(
     ) =>
       (fileList as File[]).forEach(async file => {
         // const src = await window.URL.createObjectURL(file);
+        // tslint:disable-next-line:no-debugger
         debugger;
         // actions.replaceSelection(
         //   extensionContent({

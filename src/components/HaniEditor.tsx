@@ -24,6 +24,7 @@ const AtlaskitCustomEditor: React.FC<IHaniEditorProps> = ({
           allowTextAlignment={true}
           allowExtension={true}
           defaultValue={defaultValue}
+          insertMenuItems={[fileUploadMenuItem, imageUploadMenuItem]}
           {...editorProps}
         />
       );
