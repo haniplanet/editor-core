@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 interface IFileInputProps {
-  onChange: (file: File | File[]) => void;
+  onChange: (file: File) => void;
 }
 
 const uploadFile = (files: FileList, onChange: (file: File) => void) => {

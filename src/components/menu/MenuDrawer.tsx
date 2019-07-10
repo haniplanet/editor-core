@@ -8,6 +8,7 @@ import { InsertMenuCustomItem } from '@atlaskit/editor-core/types';
 import FileInput from '../input/FileInput';
 import { ICustomButtom } from '../../../types/editor';
 import { createEditorMenuItem } from '../../lib/menu';
+import { extensionContent } from '../../lib/editor';
 
 interface IRenderEditor {
   fileUploadMenuItem: InsertMenuCustomItem;
@@ -43,32 +44,31 @@ const MenuDrawer: React.FC<IMenuDrawerProps> = React.memo(
       (null as any) as HTMLInputElement,
     );
 
-    const recursiveFileUploadQueue = (fileList: File | File[]) => {
+    const recursiveFileUploadQueue = (fileList: File) => {
       if (!uploadHandler) return null;
+
       const { file } = uploadHandler;
       file && file(fileList);
-      // tslint:disable-next-line:no-debugger
-      debugger;
     };
-    const recursiveImageUploadQueue = (
-      fileList: File | File[],
+    const recursiveImageUploadQueue = async (
+      fileList: File,
       actions: EditorActions,
-    ) =>
-      (fileList as File[]).forEach(async file => {
-        if (!uploadHandler) return null;
+    ) => {
+      // if (!uploadHandler) return null;
 
-        const { image } = uploadHandler;
-        image && image(file);
-        // const src = await window.URL.createObjectURL(file);
-        // tslint:disable-next-line:no-debugger
-        debugger;
-        // actions.replaceSelection(
-        //   extensionContent({
-        //     key: 'media',
-        //     parameters: { src },
-        //   }),
-        // );
-      });
+      // const { image } = uploadHandler;
+      // const imgSrc = image && image(fileList);
+
+      // if (!imgSrc) return null;
+      const src = await window.URL.createObjectURL(fileList);
+
+      actions.replaceSelection(
+        extensionContent({
+          key: 'media',
+          parameters: { src },
+        }),
+      );
+    };
 
     const memoCustomButton = React.useMemo(
       () =>
