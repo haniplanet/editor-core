@@ -44,30 +44,34 @@ const MenuDrawer: React.FC<IMenuDrawerProps> = React.memo(
       (null as any) as HTMLInputElement,
     );
 
-    const recursiveFileUploadQueue = (fileList: File) => {
-      if (!uploadHandler) return null;
+    const recursiveFileUploadQueue = React.useCallback(
+      (fileList: File) => {
+        if (!uploadHandler) return null;
 
-      const { file } = uploadHandler;
-      file && file(fileList);
-    };
-    const recursiveImageUploadQueue = async (
-      fileList: File,
-      actions: EditorActions,
-    ) => {
-      if (!uploadHandler) return null;
+        const { file } = uploadHandler;
+        file && file(fileList);
+      },
+      [uploadHandler],
+    );
 
-      const { image } = uploadHandler;
-      const src = image && image(fileList);
+    const recursiveImageUploadQueue = React.useCallback(
+      async (fileList: File, actions: EditorActions) => {
+        if (!uploadHandler) return null;
 
-      if (!src) return null;
+        const { image } = uploadHandler;
+        const src = image && image(fileList);
 
-      actions.replaceSelection(
-        extensionContent({
-          key: 'media',
-          parameters: { src },
-        }),
-      );
-    };
+        if (!src) return null;
+
+        actions.replaceSelection(
+          extensionContent({
+            key: 'media',
+            parameters: { src },
+          }),
+        );
+      },
+      [uploadHandler],
+    );
 
     const memoCustomButton = React.useMemo(
       () =>

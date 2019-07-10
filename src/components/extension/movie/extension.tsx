@@ -5,8 +5,12 @@ interface IMovie {
   src: string;
 }
 
-const extension = (parameters: any) => {
-  const { type, key } = parameters;
+interface IMovieExtensionProps {
+  type: string;
+  key: string;
+}
+
+const Extension = React.memo<IMovieExtensionProps>(({ type, key }) => {
   const movie: IMovie = {} as IMovie;
 
   switch (type) {
@@ -32,6 +36,6 @@ const extension = (parameters: any) => {
       />
     </div>
   );
-};
+});
 
-export default extension;
+export default Extension;

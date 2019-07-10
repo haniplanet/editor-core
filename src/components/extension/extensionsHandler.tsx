@@ -1,6 +1,7 @@
+import * as React from 'react';
 import { ExtensionHandlers } from '@atlaskit/editor-common';
-import movieExtension from './movie/extension';
-import mediaExtension from './media/extension';
+import MovieExtension from './movie/Extension';
+import MediaExtension from './media/Extension';
 
 export interface IBasicExtension {
   isMovieExtension?: boolean;
@@ -15,10 +16,10 @@ const extensionHandlers = (extension: IBasicExtension): ExtensionHandlers => ({
     switch (extensionKey) {
       case 'movie':
         if (!isMovieExtension) return null;
-        return movieExtension(parameters);
+        return MovieExtension(parameters);
       case 'media':
         if (!isMediaExtension) return null;
-        return mediaExtension(parameters);
+        return <MediaExtension src={parameters} />;
       default:
         return null;
     }
