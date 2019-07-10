@@ -7,7 +7,7 @@
     "build"
   ],
   "scripts": {
-    "build": "npm run lint && npm run build-lib",
+    "build": "rm -rf build/ && npm run lint && npm run build-lib",
     "build-lib-watch": "tsc -w",
     "build-lib": "tsc",
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'"
@@ -16,12 +16,17 @@
   "author": "Im Yongbeen <meis1541@naver.com>",
   "license": "MIT",
   "dependencies": {
+    "@atlaskit/editor-core": "112.25.3",
+    "@atlaskit/media-core": "^30.0.6",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-intl": "^2.9.0",
+    "styled-components": "3.2.6"
   },
   "devDependencies": {
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.4",
+    "@types/react-intl": "^2.3.18",
     "tslint": "^5.18.0",
     "tslint-config-airbnb": "^5.11.1",
     "tslint-react": "^4.0.0",
