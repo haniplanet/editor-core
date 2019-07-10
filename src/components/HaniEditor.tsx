@@ -21,6 +21,7 @@ interface IHaniEditorProps {
 const AtlaskitCustomEditor: React.FC<IHaniEditorProps> = ({
   basicExtension = {
     isMovieExtension: true,
+    isMediaExtension: true,
   },
   basicExtensionMenu = ['movie'],
   defaultValue,
@@ -28,41 +29,47 @@ const AtlaskitCustomEditor: React.FC<IHaniEditorProps> = ({
   customActionButton,
   customExtensions,
   editorProps = {},
-}) => (
-  <MenuDrawer
-    customButton={customButton}
-    customActionButton={customActionButton}
-    isImageUpload={true}
-    renderEditor={({
-      customButton,
-      fileUploadMenuItem,
-      imageUploadMenuItem,
-    }) => {
-      return (
-        <Editor
-          appearance="comment"
-          allowCodeBlocks={true}
-          allowLists={true}
-          allowTables={true}
-          allowTextColor={true}
-          allowTextAlignment={true}
-          allowExtension={true}
-          defaultValue={defaultValue}
-          extensionHandlers={{
-            ...extensionHandlers(basicExtension),
-            ...customExtensions,
-          }}
-          insertMenuItems={[
-            ...customButton,
-            fileUploadMenuItem,
-            imageUploadMenuItem,
-            ...extensionsMenu(basicExtensionMenu),
-          ]}
-          {...editorProps}
-        />
-      );
-    }}
-  />
-);
+}) => {
+  const { isMediaExtension } = basicExtension;
+
+  return (
+    <MenuDrawer
+      customButton={customButton}
+      customActionButton={customActionButton}
+      isImageUpload={isMediaExtension ? isMediaExtension : false}
+      renderEditor={({
+        customButton,
+        fileUploadMenuItem,
+        imageUploadMenuItem,
+      }) => {
+        const imageUploadButton = isMediaExtension ? [imageUploadMenuItem] : [];
+
+        return (
+          <Editor
+            appearance="comment"
+            allowCodeBlocks={true}
+            allowLists={true}
+            allowTables={true}
+            allowTextColor={true}
+            allowTextAlignment={true}
+            allowExtension={true}
+            defaultValue={defaultValue}
+            extensionHandlers={{
+              ...extensionHandlers(basicExtension),
+              ...customExtensions,
+            }}
+            insertMenuItems={[
+              ...customButton,
+              fileUploadMenuItem,
+              ...imageUploadButton,
+              ...extensionsMenu(basicExtensionMenu),
+            ]}
+            {...editorProps}
+          />
+        );
+      }}
+    />
+  );
+};
 
 export default AtlaskitCustomEditor;
