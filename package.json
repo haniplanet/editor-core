@@ -16,7 +16,8 @@
   "author": "Im Yongbeen <meis1541@naver.com>",
   "license": "MIT",
   "dependencies": {
-    "@atlaskit/editor-core": "112.25.3",
+    "@atlaskit/editor-common": "^39.16.0",
+    "@atlaskit/editor-core": "^112.32.0",
     "@atlaskit/media-core": "^30.0.6",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
