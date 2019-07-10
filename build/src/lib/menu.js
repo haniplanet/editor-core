@@ -25,15 +25,3 @@ exports.createEditorMenuItem = function (_a) {
         onClick: onClick,
     });
 };
-exports.extensionContent = function (_a) {
-    var key = _a.key, parameters = _a.parameters, extensionType = _a.extensionType;
-    return ({
-        type: 'extension',
-        attrs: {
-            extensionType: extensionType || 'com.haniplanet.macro.core',
-            extensionKey: key,
-            text: string_1.pascalcase(key) + " extension",
-            parameters: parameters,
-        },
-    });
-};
