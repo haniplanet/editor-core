@@ -8,8 +8,8 @@ interface IRenderEditor {
     customButton: InsertMenuCustomItem[];
 }
 export interface IUploadHandler {
-    image?: (fileList: File | File[]) => any;
-    file?: (fileList: File | File[]) => any;
+    image?: (fileList: File) => string;
+    file?: (fileList: File) => void;
 }
 interface IMenuDrawerProps {
     isImageUpload: boolean;

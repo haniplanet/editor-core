@@ -62,18 +62,19 @@ var MenuDrawer = React.memo(function (_a) {
         file && file(fileList);
     };
     var recursiveImageUploadQueue = function (fileList, actions) { return __awaiter(_this, void 0, void 0, function () {
-        var src;
+        var image, src;
         return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, window.URL.createObjectURL(fileList)];
-                case 1:
-                    src = _a.sent();
-                    actions.replaceSelection(editor_1.extensionContent({
-                        key: 'media',
-                        parameters: { src: src },
-                    }));
-                    return [2 /*return*/];
-            }
+            if (!uploadHandler)
+                return [2 /*return*/, null];
+            image = uploadHandler.image;
+            src = image && image(fileList);
+            if (!src)
+                return [2 /*return*/, null];
+            actions.replaceSelection(editor_1.extensionContent({
+                key: 'media',
+                parameters: { src: src },
+            }));
+            return [2 /*return*/];
         });
     }); };
     var memoCustomButton = React.useMemo(function () {
