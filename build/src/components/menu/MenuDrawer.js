@@ -51,16 +51,25 @@ var editor_core_1 = require("@atlaskit/editor-core");
 var FileInput_1 = __importDefault(require("../input/FileInput"));
 var menu_1 = require("../../lib/menu");
 var MenuDrawer = React.memo(function (_a) {
-    var isImageUpload = _a.isImageUpload, renderEditor = _a.renderEditor, customButton = _a.customButton, customActionButton = _a.customActionButton;
+    var isImageUpload = _a.isImageUpload, renderEditor = _a.renderEditor, customButton = _a.customButton, customActionButton = _a.customActionButton, uploadHandler = _a.uploadHandler;
     var fileInputRef = React.useRef(null);
     var imageUploadRef = React.useRef(null);
     var recursiveFileUploadQueue = function (fileList) {
+        if (!uploadHandler)
+            return null;
+        var file = uploadHandler.file;
+        file && file(fileList);
         // tslint:disable-next-line:no-debugger
         debugger;
     };
     var recursiveImageUploadQueue = function (fileList, actions) {
         return fileList.forEach(function (file) { return __awaiter(_this, void 0, void 0, function () {
+            var image;
             return __generator(this, function (_a) {
+                if (!uploadHandler)
+                    return [2 /*return*/, null];
+                image = uploadHandler.image;
+                image && image(file);
                 // const src = await window.URL.createObjectURL(file);
                 // tslint:disable-next-line:no-debugger
                 debugger;

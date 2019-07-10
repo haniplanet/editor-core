@@ -29,13 +29,15 @@ var extensionsMenu_1 = __importDefault(require("./extension/extensionsMenu"));
 var AtlaskitCustomEditor = function (_a) {
     var _b = _a.basicExtension, basicExtension = _b === void 0 ? {
         isMovieExtension: true,
-    } : _b, _c = _a.basicExtensionMenu, basicExtensionMenu = _c === void 0 ? ['movie'] : _c, defaultValue = _a.defaultValue, customButton = _a.customButton, customActionButton = _a.customActionButton, customExtensions = _a.customExtensions, _d = _a.editorProps, editorProps = _d === void 0 ? {} : _d;
-    return (React.createElement(MenuDrawer_1.default, { customButton: customButton, customActionButton: customActionButton, isImageUpload: true, renderEditor: function (_a) {
+        isMediaExtension: true,
+    } : _b, _c = _a.basicExtensionMenu, basicExtensionMenu = _c === void 0 ? ['movie'] : _c, defaultValue = _a.defaultValue, customButton = _a.customButton, customActionButton = _a.customActionButton, customExtensions = _a.customExtensions, _d = _a.editorProps, editorProps = _d === void 0 ? {} : _d, uploadHandler = _a.uploadHandler;
+    var isMediaExtension = basicExtension.isMediaExtension;
+    return (React.createElement(MenuDrawer_1.default, { customButton: customButton, customActionButton: customActionButton, isImageUpload: isMediaExtension ? isMediaExtension : false, uploadHandler: uploadHandler, renderEditor: function (_a) {
             var customButton = _a.customButton, fileUploadMenuItem = _a.fileUploadMenuItem, imageUploadMenuItem = _a.imageUploadMenuItem;
+            var imageUploadButton = isMediaExtension ? [imageUploadMenuItem] : [];
             return (React.createElement(editor_core_1.Editor, __assign({ appearance: "comment", allowCodeBlocks: true, allowLists: true, allowTables: true, allowTextColor: true, allowTextAlignment: true, allowExtension: true, defaultValue: defaultValue, extensionHandlers: __assign({}, extensionsHandler_1.default(basicExtension), customExtensions), insertMenuItems: customButton.concat([
-                    fileUploadMenuItem,
-                    imageUploadMenuItem
-                ], extensionsMenu_1.default(basicExtensionMenu)) }, editorProps)));
+                    fileUploadMenuItem
+                ], imageUploadButton, extensionsMenu_1.default(basicExtensionMenu)) }, editorProps)));
         } }));
 };
 exports.default = AtlaskitCustomEditor;
