@@ -6,36 +6,28 @@ interface IMovie {
 }
 
 interface IMovieExtensionProps {
-  type: string;
-  key: string;
+  movieType: string;
+  movieKey: string;
 }
 
-const Extension = React.memo<IMovieExtensionProps>(({ type, key }) => {
-  const movie: IMovie = {} as IMovie;
+const Extension = React.memo<IMovieExtensionProps>(
+  ({ movieType, movieKey }) => {
+    const [{ id, src }, setMovie] = React.useState<IMovie>({ id: '', src: '' });
 
-  switch (type) {
-    case 'youtube':
-      movie.id = key;
-      movie.src = '//www.youtube.com/embed/';
-      break;
-    case 'vimeo':
-      movie.id = key;
-      movie.src = '//player.vimeo.com/video/';
-      break;
-    default:
-      return null;
-  }
+    React.useEffect(() => {
+      if (movieType === 'youtube') {
+        setMovie({ id: movieKey, src: '//www.youtube.com/embed/' });
+      } else if (movieType === 'vimeo') {
+        setMovie({ id: movieKey, src: '//player.vimeo.com/video/' });
+      }
+    },              []);
 
-  return (
-    <div>
-      <iframe
-        title={`movie-${movie.id}`}
-        width="560"
-        height="315"
-        src={movie.src + movie.id}
-      />
-    </div>
-  );
-});
+    return (
+      <div>
+        <iframe title={`movie-${id}`} width="560" height="315" src={src + id} />
+      </div>
+    );
+  },
+);
 
 export default Extension;
