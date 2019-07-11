@@ -16,9 +16,13 @@ const extensionHandlers = (extension: IBasicExtension): ExtensionHandlers => ({
     switch (extensionKey) {
       case 'movie':
         if (!isMovieExtension) return null;
-        return MovieExtension(parameters);
+        // tslint:disable-next-line:no-console
+        console.log(parameters);
+        return <MovieExtension {...parameters} />;
       case 'media':
         if (!isMediaExtension) return null;
+        // tslint:disable-next-line:no-console
+        console.log(parameters);
         return <MediaExtension src={parameters} />;
       default:
         return null;
