@@ -48,17 +48,19 @@ const AtlaskitCustomEditor: React.FC<IHaniEditorProps> = ({
         const imageUploadButton = isMediaExtension ? [imageUploadMenuItem] : [];
 
         return (
-          // @ts-ignore
           <Editor
             appearance="comment"
+            // 13.0.0에서 사라질 예정 - 기본 옵션으로 변경
             allowLists={true}
             allowTables={true}
             allowTextColor={true}
             allowTextAlignment={true}
             allowExtension={true}
-            allowBlockTypes={{
-              exclude: ['codeBlocks'],
-            }}
+            // 13.0.0에서 사라질 예정 - 아래 주석으로 대체
+            allowCodeBlocks={true}
+            // allowBlockTypes={{
+            //   exclude: ['codeBlocks'],
+            // }}
             defaultValue={defaultValue}
             extensionHandlers={{
               ...extensionHandlers(basicExtension),
