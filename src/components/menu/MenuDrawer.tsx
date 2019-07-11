@@ -79,6 +79,7 @@ const MenuDrawer: React.FC<IMenuDrawerProps> = React.memo(
           ? customButton.map(item =>
               createEditorMenuItem({
                 content: item.name,
+                elemBefore: item.element,
                 onClick: item.onClick,
               }),
             )
