@@ -50,12 +50,14 @@ const AtlaskitCustomEditor: React.FC<IHaniEditorProps> = ({
         return (
           <Editor
             appearance="comment"
-            allowCodeBlocks={true}
             allowLists={true}
             allowTables={true}
             allowTextColor={true}
             allowTextAlignment={true}
             allowExtension={true}
+            allowBlockTypes={{
+              exclude: ['codeBlocks'],
+            }}
             defaultValue={defaultValue}
             extensionHandlers={{
               ...extensionHandlers(basicExtension),
