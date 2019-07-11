@@ -48,6 +48,7 @@ const AtlaskitCustomEditor: React.FC<IHaniEditorProps> = ({
         const imageUploadButton = isMediaExtension ? [imageUploadMenuItem] : [];
 
         return (
+          // @ts-ignore
           <Editor
             appearance="comment"
             allowLists={true}
