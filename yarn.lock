@@ -10,7 +10,22 @@
     "@atlaskit/util-service-support" "2.0.4"
     tslib "^1.7.1"
 
-"@atlaskit/adf-schema@^2.11.4", "@atlaskit/adf-schema@^2.5.5", "@atlaskit/adf-schema@^2.9.0":
+"@atlaskit/adf-schema@^2.12.0":
+  version "2.12.0"
+  resolved "https://registry.yarnpkg.com/@atlaskit/adf-schema/-/adf-schema-2.12.0.tgz#4d5ac609a8bdc0b981d3b04a448dd5e04e59cdab"
+  integrity sha512-MrAV2W6fsL4+TfM1TuolWPeuNVcLOez3Q7QZh0AoNTBSNrT6IOSAImXxUkEHVTCETC4tXF1KEIq6ZT84GL3UZg==
+  dependencies:
+    "@types/linkify-it" "^2.0.4"
+    "@types/prosemirror-model" "^1.5.0"
+    "@types/prosemirror-state" "^1.2.0"
+    "@types/prosemirror-view" "^1.3.0"
+    css-color-names "0.0.4"
+    linkify-it "^2.0.3"
+    prosemirror-model "^1.7.0"
+    prosemirror-view "^1.9.10"
+    tslib "^1.9.3"
+
+"@atlaskit/adf-schema@^2.5.5", "@atlaskit/adf-schema@^2.9.0":
   version "2.11.4"
   resolved "https://registry.yarnpkg.com/@atlaskit/adf-schema/-/adf-schema-2.11.4.tgz#2b614c1e30e69208ab5e10976957877797c61b5f"
   integrity sha512-vdCj7uX1cI0qCX9BimADaml+eFukyTjrzYwU2OoiMQCmipSN1JV8HtWqPq/B+rr5FaAZdFdxfruDORe7ZGhGTw==
@@ -218,13 +233,13 @@
     prosemirror-view "^1.9.10"
     raf-schd "^2.1.0"
 
-"@atlaskit/editor-core@^112.32.0":
-  version "112.32.0"
-  resolved "https://registry.yarnpkg.com/@atlaskit/editor-core/-/editor-core-112.32.0.tgz#032ba48881cf4d4d8421f3549d480bd320545901"
-  integrity sha512-+rmk14om8gxos266NW0lQ/SWILsc86bjvHEbeQs1vZ3K7D7o+JdnQsv2h/I7p8bHUoXYAvDDut7TiF7F18VROw==
+"@atlaskit/editor-core@^112.33.2":
+  version "112.33.2"
+  resolved "https://registry.yarnpkg.com/@atlaskit/editor-core/-/editor-core-112.33.2.tgz#c471d2e017ef61bf457e7bd05d21c4f14af0b1d3"
+  integrity sha512-FOCDKlopngW9zMmqHNZoqFPDTkgixzSfauHGVwE/ePoSpK08Qm/BsHG8mvhkeMfn+2McrSLx2XRjluT1EDmNnA==
   dependencies:
     "@atlaskit/activity" "^1.0.1"
-    "@atlaskit/adf-schema" "^2.11.4"
+    "@atlaskit/adf-schema" "^2.12.0"
     "@atlaskit/adf-utils" "^6.1.0"
     "@atlaskit/analytics-gas-types" "^4.0.4"
     "@atlaskit/analytics-listeners" "^6.1.0"
