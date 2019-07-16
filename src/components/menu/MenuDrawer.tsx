@@ -18,7 +18,7 @@ interface IRenderEditor {
 }
 
 export interface IUploadHandler {
-  image?: (fileList: File) => string;
+  image?: (fileList: File) => Promise<any>;
   file?: (fileList: File) => void;
 }
 
@@ -60,16 +60,18 @@ const MenuDrawer: React.FC<IMenuDrawerProps> = React.memo(
         if (!uploadHandler) return null;
 
         const { image } = uploadHandler;
-        const src = image && image(fileList);
+        const imgProvider = image && image(fileList);
 
-        if (!src) return null;
+        if (!imgProvider) return null;
 
-        actions.replaceSelection(
-          extensionContent({
-            key: 'media',
-            parameters: { src },
-          }),
-        );
+        imgProvider.then(src => {
+          actions.replaceSelection(
+            extensionContent({
+              key: 'media',
+              parameters: { src },
+            }),
+          );
+        });
       },
       [uploadHandler],
     );
