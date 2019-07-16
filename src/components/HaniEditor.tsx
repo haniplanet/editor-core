@@ -1,4 +1,6 @@
 import * as React from 'react';
+// @ts-ignore
+import isEqual from 'lodash.isequal';
 import { ExtensionHandlers } from '@atlaskit/editor-common';
 import { Editor, EditorProps, EditorActions } from '@atlaskit/editor-core';
 import MenuDrawer, { IUploadHandler } from './menu/MenuDrawer';
@@ -83,6 +85,14 @@ const HaniEditor = React.memo<IHaniEditorProps>(
         />
       </div>
     );
+  },
+  (prev, curr) => {
+    // tslint:disable-next-line:no-console
+    console.log('prev', prev);
+    // tslint:disable-next-line:no-console
+    console.log('curr', curr);
+
+    return isEqual(prev, curr);
   },
 );
 
