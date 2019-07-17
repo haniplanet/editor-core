@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "build": "rm -rf build/ && yarn build:webpack",
-    "build:webpack": "WEBPACK_ENV=production webpack"
+    "build:webpack": "WEBPACK_ENV=production webpack --progress"
   },
   "repository": "https://github.com/haniplanet/atlaskit-custom-editor.git",
   "author": "Im Yongbeen <meis1541@naver.com>",
@@ -22,8 +22,14 @@
     "webpack-cli": "^3.3.6"
   },
   "dependencies": {
+    "@atlaskit/editor-common": "^39.16.4",
+    "@atlaskit/editor-core": "^112.33.21",
+    "@atlaskit/editor-json-transformer": "^6.2.2",
+    "@atlaskit/media-core": "^30.0.8",
+    "lodash.isequal": "^4.5.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-intl": "2.6.0",
     "styled-components": "3.2.6"
   }
 }

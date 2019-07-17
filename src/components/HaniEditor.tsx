@@ -1,19 +1,19 @@
-import * as React from 'react';
+import * as React from "react";
 // @ts-ignore
-import isEqual from 'lodash.isequal';
-import { ExtensionHandlers } from '@atlaskit/editor-common';
-import { Editor, EditorProps, EditorActions } from '@atlaskit/editor-core';
-import MenuDrawer, { IUploadHandler } from './menu/MenuDrawer';
+import isEqual from "lodash.isequal";
+import { ExtensionHandlers } from "@atlaskit/editor-common";
+import { Editor, EditorProps, EditorActions } from "@atlaskit/editor-core";
+import MenuDrawer, { IUploadHandler } from "./menu/MenuDrawer";
 import extensionHandlers, {
-  IBasicExtension,
-} from './extension/extensionsHandler';
-import extensionsMenu, { TExtensionsMenu } from './extension/extensionsMenu';
-import { ICustomButtom } from '../../types/editor';
+  IBasicExtension
+} from "./extension/extensionsHandler";
+import extensionsMenu, { TExtensionsMenu } from "./extension/extensionsMenu";
+import { ICustomButtom } from "../../types/editor";
 
 interface IHaniEditorProps {
   basicExtension?: IBasicExtension;
   basicExtensionMenu?: TExtensionsMenu;
-  defaultValue?: Pick<EditorProps, 'defaultValue'>;
+  defaultValue?: Pick<EditorProps, "defaultValue">;
   customButton: ICustomButtom[];
   customActionButton?: (actions: EditorActions) => React.ReactElement[];
   customExtensions?: ExtensionHandlers;
@@ -25,15 +25,15 @@ const HaniEditor = React.memo<IHaniEditorProps>(
   ({
     basicExtension = {
       isMovieExtension: true,
-      isMediaExtension: true,
+      isMediaExtension: true
     },
-    basicExtensionMenu = ['movie'],
+    basicExtensionMenu = ["movie"],
     defaultValue,
     customButton,
     customActionButton,
     customExtensions,
     editorProps = {},
-    uploadHandler,
+    uploadHandler
   }) => {
     const { isMediaExtension } = basicExtension;
 
@@ -47,7 +47,7 @@ const HaniEditor = React.memo<IHaniEditorProps>(
           renderEditor={({
             customButton,
             fileUploadMenuItem,
-            imageUploadMenuItem,
+            imageUploadMenuItem
           }) => {
             const imageUploadButton = isMediaExtension
               ? [imageUploadMenuItem]
@@ -70,13 +70,13 @@ const HaniEditor = React.memo<IHaniEditorProps>(
                 defaultValue={defaultValue}
                 extensionHandlers={{
                   ...extensionHandlers(basicExtension),
-                  ...customExtensions,
+                  ...customExtensions
                 }}
                 insertMenuItems={[
                   ...customButton,
                   fileUploadMenuItem,
                   ...imageUploadButton,
-                  ...extensionsMenu(basicExtensionMenu),
+                  ...extensionsMenu(basicExtensionMenu)
                 ]}
                 {...editorProps}
               />
@@ -86,14 +86,7 @@ const HaniEditor = React.memo<IHaniEditorProps>(
       </div>
     );
   },
-  (prev, curr) => {
-    // tslint:disable-next-line:no-console
-    console.log('prev', prev);
-    // tslint:disable-next-line:no-console
-    console.log('curr', curr);
-
-    return isEqual(prev, curr);
-  },
+  (prev, curr) => isEqual(prev, curr)
 );
 
 export default HaniEditor;

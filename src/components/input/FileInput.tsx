@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 
 interface IFileInputProps {
   onChange: (file: File) => void;
@@ -25,7 +25,7 @@ const FileInput = React.memo(
     const [file, setFile] = React.useState<File>((null as any) as File);
 
     const fileOnChange = ({
-      target: { files },
+      target: { files }
     }: React.ChangeEvent<HTMLInputElement>) => {
       if (!(files as FileList).length) return null;
 
@@ -40,10 +40,10 @@ const FileInput = React.memo(
         type="file"
         ref={ref}
         onChange={fileOnChange}
-        style={{ display: 'none' }}
+        style={{ display: "none" }}
       />
     );
-  }),
+  })
 );
 
 export default FileInput;

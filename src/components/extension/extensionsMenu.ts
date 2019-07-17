@@ -1,7 +1,7 @@
-import movieMenu from './movie/menu';
-import { InsertMenuCustomItem } from '@atlaskit/editor-core/types';
+import movieMenu from "./movie/menu";
+import { InsertMenuCustomItem } from "@atlaskit/editor-core/dist/cjs/types";
 
-type MockMenuItem = 'movie';
+type MockMenuItem = "movie";
 
 export type TExtensionsMenu = MockMenuItem[];
 
@@ -10,7 +10,7 @@ interface IMockInsertMenu {
 }
 
 const mockInsertMenu: IMockInsertMenu = {
-  movie: movieMenu,
+  movie: movieMenu
 };
 
 const extensionsMenu = (menu: TExtensionsMenu): InsertMenuCustomItem[] =>

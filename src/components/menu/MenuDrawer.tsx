@@ -1,15 +1,15 @@
-import * as React from 'react';
+import * as React from "react";
 import {
   EditorActions,
   EditorContext,
-  WithEditorActions,
-} from '@atlaskit/editor-core';
-import { InsertMenuCustomItem } from '@atlaskit/editor-core/types';
-import FileInput from '../input/FileInput';
-import { ICustomButtom } from '../../../types/editor';
-import { createEditorMenuItem } from '../../lib/menu';
-import { extensionContent } from '../../lib/editor';
-import CustomSVG from '../common/svg/CustomSVG';
+  WithEditorActions
+} from "@atlaskit/editor-core";
+import { InsertMenuCustomItem } from "@atlaskit/editor-core/dist/cjs/types";
+import FileInput from "../input/FileInput";
+import { ICustomButtom } from "../../../types/editor";
+import { createEditorMenuItem } from "../../lib/menu";
+import { extensionContent } from "../../lib/editor";
+import CustomSVG from "../common/svg/CustomSVG";
 
 interface IRenderEditor {
   fileUploadMenuItem: InsertMenuCustomItem;
@@ -36,13 +36,13 @@ const MenuDrawer: React.FC<IMenuDrawerProps> = React.memo(
     renderEditor,
     customButton,
     customActionButton,
-    uploadHandler,
+    uploadHandler
   }) => {
     const fileInputRef = React.useRef<HTMLInputElement>(
-      (null as any) as HTMLInputElement,
+      (null as any) as HTMLInputElement
     );
     const imageUploadRef = React.useRef<HTMLInputElement>(
-      (null as any) as HTMLInputElement,
+      (null as any) as HTMLInputElement
     );
 
     const recursiveFileUploadQueue = React.useCallback(
@@ -52,7 +52,7 @@ const MenuDrawer: React.FC<IMenuDrawerProps> = React.memo(
         const { file } = uploadHandler;
         file && file(fileList);
       },
-      [uploadHandler],
+      [uploadHandler]
     );
 
     const recursiveImageUploadQueue = React.useCallback(
@@ -67,13 +67,13 @@ const MenuDrawer: React.FC<IMenuDrawerProps> = React.memo(
         imgProvider.then(src => {
           actions.replaceSelection(
             extensionContent({
-              key: 'media',
-              parameters: { src },
-            }),
+              key: "media",
+              parameters: { src }
+            })
           );
         });
       },
-      [uploadHandler],
+      [uploadHandler]
     );
 
     const memoCustomButton = React.useMemo(
@@ -83,11 +83,11 @@ const MenuDrawer: React.FC<IMenuDrawerProps> = React.memo(
               createEditorMenuItem({
                 content: item.name,
                 elemBefore: item.element,
-                onClick: item.onClick,
-              }),
+                onClick: item.onClick
+              })
             )
           : [],
-      [customButton],
+      [customButton]
     );
 
     return (
@@ -105,7 +105,7 @@ const MenuDrawer: React.FC<IMenuDrawerProps> = React.memo(
                 )}
                 {customActionButton &&
                   customActionButton(actions).map(
-                    CustomActionButton => CustomActionButton,
+                    CustomActionButton => CustomActionButton
                   )}
               </>
             )}
@@ -113,11 +113,11 @@ const MenuDrawer: React.FC<IMenuDrawerProps> = React.memo(
           {renderEditor({
             customButton: memoCustomButton,
             fileUploadMenuItem: createEditorMenuItem({
-              content: 'File Upload',
-              onClick: () => fileInputRef.current.click(),
+              content: "File Upload",
+              onClick: () => fileInputRef.current.click()
             }),
             imageUploadMenuItem: createEditorMenuItem({
-              content: 'Image Upload',
+              content: "Image Upload",
               elemBefore: (
                 <CustomSVG
                   width="24"
@@ -126,13 +126,13 @@ const MenuDrawer: React.FC<IMenuDrawerProps> = React.memo(
                   d="M11 15l-1-1-2 2h8v-1.8L14 12l-3 3zM6 6.5c0-.276.229-.5.5-.5h11c.276 0 .5.229.5.5v11c0 .276-.229.5-.5.5h-11a.504.504 0 0 1-.5-.5v-11zM9.5 11a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"
                 />
               ),
-              onClick: () => imageUploadRef.current.click(),
-            }),
+              onClick: () => imageUploadRef.current.click()
+            })
           })}
         </>
       </EditorContext>
     );
-  },
+  }
 );
 
 export default MenuDrawer;

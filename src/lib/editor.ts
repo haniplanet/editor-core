@@ -1,5 +1,5 @@
-import { JSONTransformer } from '@atlaskit/editor-json-transformer';
-import { pascalcase } from './string';
+import { JSONTransformer } from "@atlaskit/editor-json-transformer";
+import { pascalcase } from "./string";
 
 interface IExtensionContent {
   key: string;
@@ -11,15 +11,15 @@ interface IExtensionContent {
 export const extensionContent = ({
   key,
   parameters,
-  extensionType,
+  extensionType
 }: IExtensionContent) => ({
-  type: 'extension',
+  type: "extension",
   attrs: {
-    extensionType: extensionType || 'com.haniplanet.macro.core',
+    extensionType: extensionType || "com.haniplanet.macro.core",
     extensionKey: key,
     text: `${pascalcase(key)} extension`,
-    parameters,
-  },
+    parameters
+  }
 });
 
 export const editorTransformer = new JSONTransformer();
