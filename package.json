@@ -7,34 +7,22 @@
     "build"
   ],
   "scripts": {
-    "build": "rm -rf build/ && npm run lint && npm run build-lib",
-    "build-lib-watch": "tsc -w",
-    "build-lib": "tsc",
-    "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'"
+    "build:ts": "tsc",
+    "build:webpack": "WEBPACK_ENV=production webpack"
   },
   "repository": "https://github.com/haniplanet/atlaskit-custom-editor.git",
   "author": "Im Yongbeen <meis1541@naver.com>",
   "license": "MIT",
-  "dependencies": {
-    "@atlaskit/editor-common": "39.9.0",
-    "@atlaskit/editor-core": "112.18.0",
-    "@atlaskit/editor-json-transformer": "6.1.0",
-    "@atlaskit/media-core": "30.0.4",
-    "@atlaskit/media-editor": "36.1.2",
-    "lodash.isequal": "^4.5.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-intl": "2.6.0",
-    "rxjs": "5.5.0",
-    "styled-components": "3.2.6"
-  },
   "devDependencies": {
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.4",
-    "@types/react-intl": "^2.3.18",
-    "tslint": "^5.18.0",
-    "tslint-config-airbnb": "^5.11.1",
-    "tslint-react": "^4.0.0",
-    "typescript": "^3.5.3"
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.5.3",
+    "webpack": "^4.35.3",
+    "webpack-cli": "^3.3.6"
+  },
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   }
 }
