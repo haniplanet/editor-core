@@ -1,3 +1,3 @@
-import Boo from "./Boo";
+import HaniEditor from "./components/HaniEditor";
 
-export default Boo;
+export default HaniEditor;
