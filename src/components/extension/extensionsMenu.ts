@@ -1,5 +1,5 @@
-import { InsertMenuCustomItem } from '@atlaskit/editor-core/types';
 import movieMenu from './movie/menu';
+import { InsertMenuCustomItem } from '@atlaskit/editor-core/types';
 
 type MockMenuItem = 'movie';
 
