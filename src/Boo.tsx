@@ -1,5 +1,11 @@
 import * as React from "react";
+import styled from "styled-components";
 
-const Boo = React.memo(() => <h1>Boo</h1>);
+const Component = styled.div`
+  background: blue;
+  color: red;
+`;
+
+const Boo = React.memo(() => <Component>Boo</Component>);
 
 export default Boo;
