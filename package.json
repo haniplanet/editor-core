@@ -7,7 +7,7 @@
     "build"
   ],
   "scripts": {
-    "build:ts": "tsc",
+    "build": "rm -rf build/ && yarn build:webpack",
     "build:webpack": "WEBPACK_ENV=production webpack"
   },
   "repository": "https://github.com/haniplanet/atlaskit-custom-editor.git",
