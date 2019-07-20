@@ -22,10 +22,10 @@
     "webpack-cli": "^3.3.6"
   },
   "dependencies": {
-    "@atlaskit/editor-common": "^39.16.4",
-    "@atlaskit/editor-core": "^112.33.21",
-    "@atlaskit/editor-json-transformer": "^6.2.2",
-    "@atlaskit/media-core": "^30.0.8",
+    "@atlaskit/editor-core": "^107.24.3",
+    "@atlaskit/editor-json-transformer": "^5.0.2",
+    "@atlaskit/media-core": "^29.1.5",
+    "@atlaskit/renderer": "^45.6.2",
     "lodash.isequal": "^4.5.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { InsertMenuCustomItem } from "@atlaskit/editor-core/dist/cjs/types";
+import { InsertMenuCustomItem } from "@atlaskit/editor-core/types";
 import CustomSVG from "../components/common/svg/CustomSVG";
 import { camelize } from "./string";
 import { testIcon } from "../constants/svg";

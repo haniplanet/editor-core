@@ -4,7 +4,7 @@ import {
   EditorContext,
   WithEditorActions
 } from "@atlaskit/editor-core";
-import { InsertMenuCustomItem } from "@atlaskit/editor-core/dist/cjs/types";
+import { InsertMenuCustomItem } from "@atlaskit/editor-core/types";
 import FileInput from "../input/FileInput";
 import { ICustomButtom } from "../../../types/editor";
 import { createEditorMenuItem } from "../../lib/menu";

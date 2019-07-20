@@ -1,4 +1,4 @@
-import { ReactComponents } from "@atlaskit/editor-core/dist/cjs/types";
+import { ReactComponents } from "@atlaskit/editor-core/types";
 import { EditorActions } from "@atlaskit/editor-core";
 
 export interface IEditorMenuItems {
