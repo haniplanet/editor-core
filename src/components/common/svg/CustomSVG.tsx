@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 interface ICustomSVGProps {
   width: string;
@@ -6,7 +6,7 @@ interface ICustomSVGProps {
   d: string;
 }
 
-const CustomSVG = React.memo<ICustomSVGProps>(({ width, height, d }) => (
+const CustomSVG: React.FC<ICustomSVGProps> = ({width, height, d}) => (
   <svg
     width={width}
     height={height}
@@ -14,8 +14,8 @@ const CustomSVG = React.memo<ICustomSVGProps>(({ width, height, d }) => (
     focusable="false"
     role="presentation"
   >
-    <path d={d} fill="currentColor" fillRule="evenodd" />
+    <path d={d} fill="currentColor" fillRule="evenodd"/>
   </svg>
-));
+);
 
 export default CustomSVG;

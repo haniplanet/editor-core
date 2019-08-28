@@ -1,6 +1,7 @@
-import * as React from "react";
+import * as React from 'react';
 
 interface IFileInputProps {
+  innerRef?: React.Ref<HTMLInputElement>;
   onChange: (file: File) => void;
 }
 
@@ -20,30 +21,40 @@ const uploadFile = (files: FileList, onChange: (file: File) => void) => {
   });
 };
 
-const FileInput = React.memo(
-  React.forwardRef<HTMLInputElement, IFileInputProps>(({ onChange }, ref) => {
-    const [file, setFile] = React.useState<File>((null as any) as File);
+class FileInput extends React.Component<IFileInputProps, {file: File}> {
+  constructor(props) {
+    super(props);
 
-    const fileOnChange = ({
-      target: { files }
-    }: React.ChangeEvent<HTMLInputElement>) => {
-      if (!(files as FileList).length) return null;
+    this.state = {file: null};
+  }
 
-      const file = (files as FileList)[0];
+  public fileOnChange = ({target: {files}}: React.ChangeEvent<HTMLInputElement>) => {
+    if (!(files as FileList).length) {
+      return null;
+    }
 
-      uploadFile(files as FileList, onChange);
-      setFile(file);
-    };
+    const file = (files as FileList)[0];
+    const {onChange} = this.props;
 
+    uploadFile(files as FileList, onChange);
+    this.setState({file});
+  };
+
+  render() {
     return (
       <input
         type="file"
-        ref={ref}
-        onChange={fileOnChange}
-        style={{ display: "none" }}
+        ref={this.props.innerRef}
+        onChange={this.fileOnChange}
+        style={{display: 'none'}}
       />
     );
-  })
-);
+  }
+}
 
-export default FileInput;
+export default React.forwardRef<HTMLInputElement, IFileInputProps>((props, ref) => (
+  <FileInput
+    innerRef={ref}
+    {...props}
+  />
+));
