@@ -103,11 +103,19 @@ class MenuDrawer extends React.Component<IMenuDrawerProps> {
               ))
               : [],
             fileUploadMenuItem: createEditorMenuItem({
-              content: 'File Upload',
+              content: '파일 업로드',
               onClick: () => this.fileInputRef.current.click(),
+              elemBefore: (
+                <CustomSVG
+                  width="24"
+                  height="24"
+                  // tslint:disable-next-line:max-line-length
+                  d="M9.429 16h5.142v-5.077H18L12 5l-6 5.923h3.429V16zM6 18h12v1H6v-1z"
+                />
+              )
             }),
             imageUploadMenuItem: createEditorMenuItem({
-              content: 'Image Upload',
+              content: '이미지 업로드',
               elemBefore: (
                 <CustomSVG
                   width="24"
