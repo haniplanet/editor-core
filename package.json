@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "build": "rm -rf build/ && yarn build:webpack",
-    "build:webpack": "WEBPACK_ENV=development webpack --progress"
+    "build:webpack": "WEBPACK_ENV=production webpack --progress"
   },
   "repository": "https://github.com/haniplanet/atlaskit-custom-editor.git",
   "author": "Im Yongbeen <meis1541@naver.com>",
@@ -24,6 +24,7 @@
     "@babel/preset-typescript": "^7.3.3",
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.4",
+    "atlassian-webresource-webpack-plugin": "^4.7.0",
     "babel-loader": "^8.0.6",
     "babel-plugin-dynamic-import-webpack": "^1.1.0",
     "typescript": "^3.5.3",

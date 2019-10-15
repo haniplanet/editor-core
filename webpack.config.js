@@ -1,4 +1,5 @@
 const path = require('path');
+const WrmPlugin = require('atlassian-webresource-webpack-plugin');
 
 const MODE = process.env.WEBPACK_ENV;
 const ENTRY_FILE = path.resolve(__dirname, 'src', 'index.ts');
@@ -25,6 +26,16 @@ const config = {
     filename: '[name].js',
     libraryTarget: 'commonjs2',
   },
+  plugins: [
+    new WrmPlugin({
+      pluginKey: 'my.full.plugin.artifact-id',
+      contextMap: {
+        index: [],
+        lib: [],
+      },
+      xmlDescriptors: path.resolve(OUTPUT_DIR, 'META-INF', 'plugin-descriptors', 'wr-defs.xml'),
+    }),
+  ],
   module: {
     rules: [
       {
