@@ -7,10 +7,8 @@
     "build"
   ],
   "scripts": {
-    "build": "yarn build:clean && yarn build:hani-editor && yarn build:editor-lib",
-    "build:clean": "rm -rf build",
-    "build:hani-editor": "parcel build src/index.ts --out-dir build --global hani-editor",
-    "build:editor-lib": "parcel build src/lib/index.ts --out-dir build/lib --global editor-lib"
+    "build": "rm -rf build/ && yarn build:webpack",
+    "build:webpack": "WEBPACK_ENV=production webpack --progress"
   },
   "repository": "https://github.com/haniplanet/atlaskit-custom-editor.git",
   "author": "Im Yongbeen <meis1541@naver.com>",
@@ -18,8 +16,12 @@
   "devDependencies": {
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.4",
-    "parcel-bundler": "^1.12.4",
-    "typescript": "^3.5.3"
+    "atlassian-webresource-webpack-plugin": "^4.7.0",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-dynamic-import-webpack": "^1.1.0",
+    "typescript": "^3.5.3",
+    "webpack": "^4.35.3",
+    "webpack-cli": "^3.3.6"
   },
   "dependencies": {
     "@atlaskit/editor-core": "^107.24.3",
