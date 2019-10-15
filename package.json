@@ -7,8 +7,10 @@
     "build"
   ],
   "scripts": {
-    "build": "rm -rf build/ && yarn build:webpack",
-    "build:webpack": "WEBPACK_ENV=development webpack --progress"
+    "build": "yarn build:clean && yarn build:hani-editor && yarn build:editor-lib",
+    "build:clean": "rm -rf build",
+    "build:hani-editor": "parcel build src/index.ts --out-dir build --global hani-editor",
+    "build:editor-lib": "parcel build src/lib/index.ts --out-dir build/lib --global editor-lib"
   },
   "repository": "https://github.com/haniplanet/atlaskit-custom-editor.git",
   "author": "Im Yongbeen <meis1541@naver.com>",
