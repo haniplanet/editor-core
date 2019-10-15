@@ -1,6 +1,6 @@
 {
   "name": "hani-editor",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Haniplanet Editor with Renderer",
   "main": "build/index.js",
   "files": [
