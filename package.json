@@ -1,13 +1,13 @@
 {
-  "name": "hani-editor",
-  "version": "0.0.6",
-  "description": "Haniplanet Editor with Renderer",
+  "name": "@hanii/editor-core",
+  "version": "0.0.1",
+  "description": "Haniplanet Editor Core based Atlaskit Editor Core",
   "main": "build/index.js",
   "files": [
     "build"
   ],
   "scripts": {
-    "build": "rm -rf build/ && yarn build:webpack",
+    "build": "rimraf ./build && yarn build:webpack",
     "build:webpack": "WEBPACK_ENV=production webpack --progress"
   },
   "repository": "https://github.com/haniplanet/atlaskit-custom-editor.git",
