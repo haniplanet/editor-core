@@ -1,7 +1,7 @@
 const path = require('path');
 const WrmPlugin = require('atlassian-webresource-webpack-plugin');
 
-const MODE = process.env.WEBPACK_ENV;
+const MODE = "production";    // 기본적으로 production 모드를 사용
 const ENTRY_FILE = path.resolve(__dirname, 'src', 'index.ts');
 const OUTPUT_DIR = path.join(__dirname, 'build');
 

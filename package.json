@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "build": "rimraf ./build && yarn build:webpack",
-    "build:webpack": "WEBPACK_ENV=production webpack --progress"
+    "build:webpack": "webpack --progress"
   },
   "repository": "https://github.com/haniplanet/atlaskit-custom-editor.git",
   "author": "Im Yongbeen <meis1541@naver.com>",
