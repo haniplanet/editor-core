@@ -1,0 +1,5 @@
+**/*
+!.npmignore
+!/build/**/*
+!packages.json
+!README.md
