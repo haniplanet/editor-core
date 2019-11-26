@@ -1,6 +1,6 @@
 {
   "name": "@hanii/editor-core",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Haniplanet Editor Core based Atlaskit Editor Core",
   "main": "build/index.js",
   "files": [
