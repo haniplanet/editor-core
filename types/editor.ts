@@ -1,5 +1,5 @@
-import { ReactComponents } from "@atlaskit/editor-core/types";
-import { EditorActions } from "@atlaskit/editor-core";
+import {ReactComponents} from '@atlaskit/editor-core/types';
+import {EditorActions} from '@atlaskit/editor-core';
 
 export interface IEditorMenuItems {
   content: string;

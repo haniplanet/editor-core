@@ -14,7 +14,7 @@ const CustomSVG: React.FC<ICustomSVGProps> = ({width, height, d}) => (
     focusable="false"
     role="presentation"
   >
-    <path d={d} fill="currentColor" fillRule="evenodd"/>
+    <path d={d} fill="currentColor" fillRule="evenodd" />
   </svg>
 );
 

@@ -32,7 +32,7 @@ class Extension extends React.Component<IMovieExtensionProps, IMovie> {
 
     return (
       <div>
-        <iframe title={`movie-${id}`} width="560" height="315" src={src + id}/>
+        <iframe title={`movie-${id}`} width="560" height="315" src={src + id} />
       </div>
     );
   }

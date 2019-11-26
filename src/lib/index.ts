@@ -1,3 +1,3 @@
-import { editorTransformer } from "./editor";
+import {editorTransformer} from './editor';
 
-export { editorTransformer };
+export {editorTransformer};

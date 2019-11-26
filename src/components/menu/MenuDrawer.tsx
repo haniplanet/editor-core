@@ -1,9 +1,5 @@
 import * as React from 'react';
-import {
-  EditorActions,
-  EditorContext,
-  WithEditorActions,
-} from '@atlaskit/editor-core';
+import {EditorActions, EditorContext, WithEditorActions} from '@atlaskit/editor-core';
 import {InsertMenuCustomItem} from '@atlaskit/editor-core/types';
 import FileInput from '../input/FileInput';
 import {ICustomButtom} from '../../../types/editor';
@@ -31,6 +27,9 @@ interface IMenuDrawerProps {
 }
 
 class MenuDrawer extends React.Component<IMenuDrawerProps> {
+  fileInputRef: any;
+  imageUploadRef: any;
+
   constructor(props) {
     super(props);
     this.fileInputRef = React.createRef();
@@ -65,17 +64,23 @@ class MenuDrawer extends React.Component<IMenuDrawerProps> {
         extensionContent({
           key: 'media',
           parameters: {src},
-        }),
+        })
       );
     });
   };
 
   render() {
-    const {isImageUpload, renderEditor, customButton, customActionButton, uploadHandler} = this.props;
+    const {
+      isImageUpload,
+      renderEditor,
+      customButton,
+      customActionButton,
+      uploadHandler,
+    } = this.props;
     return (
       <EditorContext>
         <>
-          <FileInput ref={this.fileInputRef} onChange={this.recursiveFileUploadQueue}/>
+          <FileInput ref={this.fileInputRef} onChange={this.recursiveFileUploadQueue} />
           <WithEditorActions
             render={actions => (
               <>
@@ -86,21 +91,19 @@ class MenuDrawer extends React.Component<IMenuDrawerProps> {
                   />
                 )}
                 {customActionButton &&
-                customActionButton(actions).map(
-                  CustomActionButton => CustomActionButton,
-                )}
+                  customActionButton(actions).map(CustomActionButton => CustomActionButton)}
               </>
             )}
           />
           {renderEditor({
             customButton: customButton
-              ? customButton.map(item => (
-                createEditorMenuItem({
-                  content: item.name,
-                  elemBefore: item.element,
-                  onClick: item.onClick,
-                })
-              ))
+              ? customButton.map(item =>
+                  createEditorMenuItem({
+                    content: item.name,
+                    elemBefore: item.element,
+                    onClick: item.onClick,
+                  })
+                )
               : [],
             fileUploadMenuItem: createEditorMenuItem({
               content: '파일 업로드',
@@ -112,7 +115,7 @@ class MenuDrawer extends React.Component<IMenuDrawerProps> {
                   // tslint:disable-next-line:max-line-length
                   d="M9.429 16h5.142v-5.077H18L12 5l-6 5.923h3.429V16zM6 18h12v1H6v-1z"
                 />
-              )
+              ),
             }),
             imageUploadMenuItem: createEditorMenuItem({
               content: '이미지 업로드',

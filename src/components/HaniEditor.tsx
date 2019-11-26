@@ -4,9 +4,7 @@ import isEqual from 'lodash.isequal';
 import {ExtensionHandlers} from '@atlaskit/editor-common';
 import {Editor, EditorProps, EditorActions} from '@atlaskit/editor-core';
 import MenuDrawer, {IUploadHandler} from './menu/MenuDrawer';
-import extensionHandlers, {
-  IBasicExtension,
-} from './extension/extensionsHandler';
+import extensionHandlers, {IBasicExtension} from './extension/extensionsHandler';
 import extensionsMenu, {TExtensionsMenu} from './extension/extensionsMenu';
 import {ICustomButtom} from '../../types/editor';
 
@@ -33,7 +31,7 @@ const HaniEditor: React.FC<IHaniEditorProps> = ({
   customExtensions,
   editorProps = {},
   uploadHandler,
-}) => {
+}: IHaniEditorProps) => {
   const {isMediaExtension} = basicExtension;
 
   return (
@@ -43,29 +41,18 @@ const HaniEditor: React.FC<IHaniEditorProps> = ({
         customActionButton={customActionButton}
         isImageUpload={isMediaExtension ? isMediaExtension : false}
         uploadHandler={uploadHandler}
-        renderEditor={({
-          customButton,
-          fileUploadMenuItem,
-          imageUploadMenuItem,
-        }) => {
-          const imageUploadButton = isMediaExtension
-            ? [imageUploadMenuItem]
-            : [];
+        renderEditor={({customButton, fileUploadMenuItem, imageUploadMenuItem}) => {
+          const imageUploadButton = isMediaExtension ? [imageUploadMenuItem] : [];
 
           return (
             <Editor
               appearance="comment"
-              // 13.0.0에서 사라질 예정 - 기본 옵션으로 변경
               allowLists={true}
               allowTables={true}
               allowTextColor={true}
               allowTextAlignment={true}
               allowExtension={true}
-              // 13.0.0에서 사라질 예정 - 아래 주석으로 대체
               allowCodeBlocks={true}
-              // allowBlockTypes={{
-              //   exclude: ['codeBlocks'],
-              // }}
               defaultValue={defaultValue}
               extensionHandlers={{
                 ...extensionHandlers(basicExtension),

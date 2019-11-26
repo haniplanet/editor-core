@@ -1,8 +1,8 @@
-import { youtubeReg, vimeoReg } from '../../../constants/url';
-import { extensionContent } from '../../../lib/editor';
-import { createEditorMenuItem } from '../../../lib/menu';
-import CustomSVG from "../../common/svg/CustomSVG";
-import * as React from "react";
+import {youtubeReg, vimeoReg} from '../../../constants/url';
+import {extensionContent} from '../../../lib/editor';
+import {createEditorMenuItem} from '../../../lib/menu';
+import CustomSVG from '../../common/svg/CustomSVG';
+import * as React from 'react';
 
 interface IParams {
   type: string;
@@ -31,7 +31,7 @@ const menu = createEditorMenuItem({
       extensionContent({
         key: 'movie',
         parameters: newParameters,
-      }),
+      })
     );
   },
   elemBefore: (

@@ -53,8 +53,5 @@ class FileInput extends React.Component<IFileInputProps, {file: File}> {
 }
 
 export default React.forwardRef<HTMLInputElement, IFileInputProps>((props, ref) => (
-  <FileInput
-    innerRef={ref}
-    {...props}
-  />
+  <FileInput innerRef={ref} {...props} />
 ));
