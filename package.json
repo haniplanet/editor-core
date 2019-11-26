@@ -7,7 +7,7 @@
     "build"
   ],
   "scripts": {
-    "build": "rimraf ./build && yarn build:webpack",
+    "build": "rimraf ./build && tsc && yarn build:webpack",
     "build:webpack": "webpack --progress"
   },
   "repository": "https://github.com/haniplanet/atlaskit-custom-editor.git",
