@@ -1,6 +1,4 @@
 import * as React from 'react';
-// @ts-ignore
-import isEqual from 'lodash.isequal';
 import {ExtensionHandlers} from '@atlaskit/editor-common';
 import {Editor, EditorProps, EditorActions} from '@atlaskit/editor-core';
 import MenuDrawer, {IUploadHandler} from './menu/MenuDrawer';
@@ -8,7 +6,7 @@ import extensionHandlers, {IBasicExtension} from './extension/extensionsHandler'
 import extensionsMenu, {TExtensionsMenu} from './extension/extensionsMenu';
 import {ICustomButtom} from '../../types/editor';
 
-interface IHaniEditorProps {
+export interface IEditorCoreProps {
   basicExtension?: IBasicExtension;
   basicExtensionMenu?: TExtensionsMenu;
   defaultValue?: Pick<EditorProps, 'defaultValue'>;
@@ -19,7 +17,7 @@ interface IHaniEditorProps {
   uploadHandler?: IUploadHandler;
 }
 
-const EditorCore: React.FC<IHaniEditorProps> = ({
+const EditorCore: React.FC<IEditorCoreProps> = ({
   basicExtension = {
     isMovieExtension: true,
     isMediaExtension: true,
@@ -31,7 +29,7 @@ const EditorCore: React.FC<IHaniEditorProps> = ({
   customExtensions,
   editorProps = {},
   uploadHandler,
-}: IHaniEditorProps) => {
+}: IEditorCoreProps) => {
   const {isMediaExtension} = basicExtension;
 
   return (

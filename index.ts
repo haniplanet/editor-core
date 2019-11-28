@@ -1,5 +1,8 @@
-import EditorCore from './src/components/EditorCore';
+import EditorCore, {IEditorCoreProps} from './src/components/EditorCore';
 import {editorTransformer} from './src/lib';
 
-export {editorTransformer};
+export {
+  editorTransformer,
+  IEditorCoreProps,
+};
 export default EditorCore;
