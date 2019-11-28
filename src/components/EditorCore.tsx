@@ -19,7 +19,7 @@ interface IHaniEditorProps {
   uploadHandler?: IUploadHandler;
 }
 
-const HaniEditor: React.FC<IHaniEditorProps> = ({
+const EditorCore: React.FC<IHaniEditorProps> = ({
   basicExtension = {
     isMovieExtension: true,
     isMediaExtension: true,
@@ -73,4 +73,4 @@ const HaniEditor: React.FC<IHaniEditorProps> = ({
   );
 };
 
-export default HaniEditor;
+export default EditorCore;

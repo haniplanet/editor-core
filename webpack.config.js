@@ -5,8 +5,6 @@ const MODE = 'production'; // 기본적으로 production 모드를 사용
 const ENTRY_FILE = path.resolve(__dirname, 'src', 'index.ts');
 const OUTPUT_DIR = path.join(__dirname, 'build');
 
-const ENTRY_LIB_FILE = path.resolve(__dirname, 'src', 'lib', 'index.ts');
-
 const config = {
   mode: MODE,
   resolve: {
@@ -19,7 +17,6 @@ const config = {
   },
   entry: {
     index: ENTRY_FILE,
-    lib: ENTRY_LIB_FILE,
   },
   output: {
     path: OUTPUT_DIR,

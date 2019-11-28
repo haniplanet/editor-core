@@ -1,3 +1,5 @@
-import HaniEditor from './components/HaniEditor';
+import EditorCore from './components/EditorCore';
+import {editorTransformer} from './lib';
 
-export default HaniEditor;
+export {editorTransformer};
+export default EditorCore;
