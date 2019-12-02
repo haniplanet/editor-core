@@ -3,6 +3,7 @@ const WrmPlugin = require('atlassian-webresource-webpack-plugin');
 
 const MODE = 'production'; // 기본적으로 production 모드를 사용
 const ENTRY_FILE = path.resolve(__dirname, 'index.ts');
+const ENTRY_LIB_FILE = path.resolve(__dirname, 'lib.ts');
 const OUTPUT_DIR = path.join(__dirname, 'build');
 
 const config = {
@@ -17,6 +18,7 @@ const config = {
   },
   entry: {
     index: ENTRY_FILE,
+    lib: ENTRY_LIB_FILE,
   },
   output: {
     path: OUTPUT_DIR,
