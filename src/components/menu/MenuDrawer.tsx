@@ -75,7 +75,6 @@ class MenuDrawer extends React.Component<IMenuDrawerProps> {
       renderEditor,
       customButton,
       customActionButton,
-      uploadHandler,
     } = this.props;
     return (
       <EditorContext>
