@@ -69,6 +69,6 @@
 
     "skipLibCheck": true
   },
-  "include": ["src", "./index.ts"],
+  "include": ["src", "./index.ts", "./lib.ts"],
   "exclude": ["build", "node_modules"]
 }
