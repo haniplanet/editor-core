@@ -42,7 +42,6 @@ class EditorCore extends React.PureComponent<IEditorCoreProps> {
     const {
       basicExtension = {
         isMovieExtension: true,
-        isMediaExtension: true,
       },
       basicExtensionMenu = ['movie'],
       defaultValue,
@@ -53,22 +52,18 @@ class EditorCore extends React.PureComponent<IEditorCoreProps> {
       uploadHandler,
       editorOnChange,
     } = this.props;
-    const {isMediaExtension} = basicExtension;
 
     return (
       <div className="hani-editor">
         <MenuDrawer
           customButton={customButton}
           customActionButton={customActionButton}
-          isImageUpload={isMediaExtension ? isMediaExtension : false}
           uploadHandler={uploadHandler}
           renderEditor={({
             customButton,
             fileUploadMenuItem,
             imageUploadMenuItem,
           }) => {
-            const imageUploadButton = isMediaExtension ? [imageUploadMenuItem] : [];
-
             return (
               <Editor
                 appearance="comment"
@@ -86,7 +81,7 @@ class EditorCore extends React.PureComponent<IEditorCoreProps> {
                 insertMenuItems={[
                   ...customButton,
                   fileUploadMenuItem,
-                  ...imageUploadButton,
+                  imageUploadMenuItem,
                   ...extensionsMenu(basicExtensionMenu as TExtensionsMenu),
                 ]}
                 {...editorProps}

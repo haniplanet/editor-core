@@ -19,7 +19,6 @@ export interface IUploadHandler {
 }
 
 interface IMenuDrawerProps {
-  isImageUpload: boolean;
   renderEditor: (params: IRenderEditor) => React.ReactNode;
   customButton?: ICustomButtom[];
   customActionButton?: (actions: EditorActions) => React.ReactElement[];
@@ -46,36 +45,26 @@ class MenuDrawer extends React.Component<IMenuDrawerProps> {
     file && file(fileList);
   };
 
-  public recursiveImageUploadQueue = async (fileList: File, actions: EditorActions) => {
-    const {uploadHandler} = this.props;
-    if (!uploadHandler) {
-      return null;
-    }
+  public recursiveImageUploadQueue = async (file: File, actions: EditorActions) => {
+    console.log('fileList', file);
 
-    const {image} = uploadHandler;
-    const imgProvider = image && image(fileList);
+    const url = await window.URL.createObjectURL(file);
+    console.log('url', url);
 
-    if (!imgProvider) {
-      return null;
-    }
-
-    imgProvider.then(src => {
-      actions.replaceSelection(
-        extensionContent({
-          key: 'media',
-          parameters: {src},
-        })
-      );
+    // @ts-ignore
+    actions.replaceSelection({
+      type: "mediaSingle",
+      attrs: { layout: "center" },
+      content: [{
+        type: "media",
+        attrs: {type: "external", url},
+      }],
     });
   };
 
   render() {
-    const {
-      isImageUpload,
-      renderEditor,
-      customButton,
-      customActionButton,
-    } = this.props;
+    const {renderEditor, customButton, customActionButton} = this.props;
+
     return (
       <EditorContext>
         <>
@@ -83,12 +72,10 @@ class MenuDrawer extends React.Component<IMenuDrawerProps> {
           <WithEditorActions
             render={actions => (
               <>
-                {isImageUpload && (
-                  <FileInput
-                    ref={this.imageUploadRef}
-                    onChange={file => this.recursiveImageUploadQueue(file, actions)}
-                  />
-                )}
+                <FileInput
+                  ref={this.imageUploadRef}
+                  onChange={file => this.recursiveImageUploadQueue(file, actions)}
+                />
                 {customActionButton &&
                   customActionButton(actions).map(CustomActionButton => CustomActionButton)}
               </>
