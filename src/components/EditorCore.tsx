@@ -62,18 +62,22 @@ class EditorCore extends React.PureComponent<IEditorCoreProps> {
           customActionButton={customActionButton}
           isImageUpload={isMediaExtension ? isMediaExtension : false}
           uploadHandler={uploadHandler}
-          renderEditor={({customButton, fileUploadMenuItem, imageUploadMenuItem}) => {
+          renderEditor={({
+            customButton,
+            fileUploadMenuItem,
+            imageUploadMenuItem,
+          }) => {
             const imageUploadButton = isMediaExtension ? [imageUploadMenuItem] : [];
 
             return (
               <Editor
                 appearance="comment"
-                allowLists={true}
-                allowTables={true}
-                allowTextColor={true}
-                allowTextAlignment={true}
-                allowExtension={true}
-                allowCodeBlocks={true}
+                allowLists
+                allowTables
+                allowTextColor
+                allowExtension
+                allowCodeBlocks
+                allowTextAlignment
                 defaultValue={defaultValue}
                 extensionHandlers={{
                   ...extensionHandlers(basicExtension),
