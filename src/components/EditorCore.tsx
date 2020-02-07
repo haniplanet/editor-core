@@ -61,8 +61,8 @@ class EditorCore extends React.PureComponent<IEditorCoreProps> {
           uploadHandler={uploadHandler}
           renderEditor={({
             customButton,
+            imageUploadProvider,
             fileUploadMenuItem,
-            imageUploadMenuItem,
           }) => {
             return (
               <Editor
@@ -74,6 +74,7 @@ class EditorCore extends React.PureComponent<IEditorCoreProps> {
                 allowCodeBlocks
                 allowTextAlignment
                 defaultValue={defaultValue}
+                legacyImageUploadProvider={imageUploadProvider}
                 extensionHandlers={{
                   ...extensionHandlers(basicExtension),
                   ...customExtensions,
@@ -81,7 +82,6 @@ class EditorCore extends React.PureComponent<IEditorCoreProps> {
                 insertMenuItems={[
                   ...customButton,
                   fileUploadMenuItem,
-                  imageUploadMenuItem,
                   ...extensionsMenu(basicExtensionMenu as TExtensionsMenu),
                 ]}
                 {...editorProps}

@@ -1,15 +1,15 @@
 import * as React from 'react';
-import {EditorActions, EditorContext, WithEditorActions} from '@atlaskit/editor-core';
 import {InsertMenuCustomItem} from '@atlaskit/editor-core/types';
+import {ImageUploadHandler} from '@atlaskit/editor-core/plugins/image-upload/types';
+import {EditorActions, EditorContext, WithEditorActions} from '@atlaskit/editor-core';
 import FileInput from '../input/FileInput';
 import {ICustomButtom} from '../../../types/editor';
 import {createEditorMenuItem} from '../../lib/menu';
-import {extensionContent} from '../../lib/editor';
 import CustomSVG from '../common/svg/CustomSVG';
 
 interface IRenderEditor {
+  imageUploadProvider: Promise<ImageUploadHandler>;
   fileUploadMenuItem: InsertMenuCustomItem;
-  imageUploadMenuItem: InsertMenuCustomItem;
   customButton: InsertMenuCustomItem[];
 }
 
@@ -62,6 +62,10 @@ class MenuDrawer extends React.Component<IMenuDrawerProps> {
     });
   };
 
+  public imageUploadProvider = Promise.resolve((event, fn) => {
+    this.imageUploadRef.current.click();
+  });
+
   render() {
     const {renderEditor, customButton, customActionButton} = this.props;
 
@@ -82,6 +86,7 @@ class MenuDrawer extends React.Component<IMenuDrawerProps> {
             )}
           />
           {renderEditor({
+            imageUploadProvider: this.imageUploadProvider,
             customButton: customButton
               ? customButton.map(item =>
                   createEditorMenuItem({
@@ -102,18 +107,6 @@ class MenuDrawer extends React.Component<IMenuDrawerProps> {
                   d="M9.429 16h5.142v-5.077H18L12 5l-6 5.923h3.429V16zM6 18h12v1H6v-1z"
                 />
               ),
-            }),
-            imageUploadMenuItem: createEditorMenuItem({
-              content: '이미지 업로드',
-              elemBefore: (
-                <CustomSVG
-                  width="24"
-                  height="24"
-                  // tslint:disable-next-line:max-line-length
-                  d="M11 15l-1-1-2 2h8v-1.8L14 12l-3 3zM6 6.5c0-.276.229-.5.5-.5h11c.276 0 .5.229.5.5v11c0 .276-.229.5-.5.5h-11a.504.504 0 0 1-.5-.5v-11zM9.5 11a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"
-                />
-              ),
-              onClick: () => this.imageUploadRef.current.click(),
             }),
           })}
         </>
